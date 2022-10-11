@@ -1,20 +1,22 @@
 #pragma once
 #include "Threading/Mutex/Mutex.h"
 
-class CLockGuard
-{
-public:
-    CLockGuard(const CMutex &i_oMutex)
+namespace Devel::Threading {
+    class CLockGuard
+    {
+    public:
+        CLockGuard(const CMutex& i_oMutex)
             : m_oMutex(i_oMutex)
-    {
-        this->m_oMutex.lock();
-    }
+        {
+            this->m_oMutex.lock();
+        }
 
-    ~CLockGuard()
-    {
-        this->m_oMutex.unlock();
-    }
+        ~CLockGuard()
+        {
+            this->m_oMutex.unlock();
+        }
 
-private:
-    const CMutex &m_oMutex;
-};
+    private:
+        const CMutex& m_oMutex;
+    };
+}

@@ -9,7 +9,7 @@
 
 namespace Devel::Logger
 {
-    CMutex g_oMutex;
+    Devel::Threading::CMutex g_oMutex;
 
     std::string DateTime()
     {

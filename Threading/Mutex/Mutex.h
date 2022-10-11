@@ -1,28 +1,31 @@
 #pragma once
 #include <mutex>
 
-class CMutex
-{
-public:
-    CMutex() = default;
-    virtual ~CMutex() = default;
-
-public:
-    void lock() const
+namespace Devel::Threading {
+    class CMutex
     {
-        return this->m_oMutex.lock();
-    }
+    public:
+        CMutex() = default;
+        virtual ~CMutex() = default;
 
-    void unlock() const
-    {
-        return this->m_oMutex.unlock();
-    }
+    public:
+        void lock() const
+        {
+            return this->m_oMutex.lock();
+        }
 
-    bool tryLock() const
-    {
-        return this->m_oMutex.try_lock();
-    }
+        void unlock() const
+        {
 
-private:
-    mutable std::recursive_mutex m_oMutex;
-};
+            return this->m_oMutex.unlock();
+        }
+
+        bool tryLock() const
+        {
+            return this->m_oMutex.try_lock();
+        }
+
+    private:
+        mutable std::recursive_mutex m_oMutex;
+    };
+}
