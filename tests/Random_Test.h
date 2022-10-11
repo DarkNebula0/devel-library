@@ -5,6 +5,7 @@
 using namespace Devel;
 
 TEST_CASE( "unique", "[Random]" ) {
+    Random::Generate(15, 30);
     REQUIRE( Random::Generate(15, 30) != Random::Generate(15, 30));
 }
 

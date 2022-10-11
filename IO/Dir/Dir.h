@@ -3,6 +3,7 @@
 #include "IO/Path/Path.h"
 
 #include <Core/Exceptions.h>
+#include <utility>
 #include <vector>
 #include <optional>
 
@@ -20,7 +21,7 @@ namespace Devel::IO
     {
     public:
         CDir() = default;
-        CDir(CPath i_oPath) : m_oPath(i_oPath) {};
+        explicit CDir(CPath i_oPath) : m_oPath(std::move(i_oPath)) {};
     private:
         CPath m_oPath;
     public:
@@ -36,7 +37,7 @@ namespace Devel::IO
             return fs::create_directory_symlink(i_oTargetPath.getPath(), i_oLinkPath.getPath());
         }
 
-        static bool isDirectory(const CPath i_oPath)
+        static bool isDirectory(const CPath& i_oPath)
         {
             return fs::is_directory(i_oPath.getPath());
         }

@@ -2,8 +2,7 @@
 
 #include <random>
 
-namespace Devel {
-    namespace Random {
+namespace Devel::Random {
         template<typename T>
         T Generate(T i_nMinimal, T i_nMaximal) {
             static std::random_device s_oRandomDevice;
@@ -12,4 +11,3 @@ namespace Devel {
             return std::uniform_int_distribution<T>(i_nMinimal, i_nMaximal)(s_oDefaultRandomEngine);
         }
     }
-}

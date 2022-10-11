@@ -69,23 +69,23 @@ namespace Devel {
         }
 
     public:
-        Constructor constructor() const {
+        [[nodiscard]] Constructor constructor() const {
             return this->m_fnClassConstructor;
         }
 
-        ConstructorShared constructorShared() const {
+        [[nodiscard]] ConstructorShared constructorShared() const {
             return this->m_fnClassConstructorShared;
         }
 
-        Deconstructor deconstructor() const {
+        [[nodiscard]] Deconstructor deconstructor() const {
             return this->m_fnClassDeconstructor;
         }
 
-        size_t size() const {
+        [[nodiscard]] size_t size() const {
             return this->m_nClassSize;
         }
 
-        bool hasVirtual() const {
+        [[nodiscard]] bool hasVirtual() const {
             return this->m_fHasVirtual;
         }
 
@@ -94,7 +94,7 @@ namespace Devel {
         ConstructorShared m_fnClassConstructorShared;
         Deconstructor m_fnClassDeconstructor;
 
-        size_t m_nClassSize;
-        bool m_fHasVirtual;
+        size_t m_nClassSize{};
+        bool m_fHasVirtual{};
     };
 }

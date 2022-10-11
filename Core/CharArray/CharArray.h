@@ -10,11 +10,11 @@ namespace Devel {
         CCharArray()
                 : m_szString{0} {}
 
-        CCharArray(const char *i_szString) {
+        explicit CCharArray(const char *i_szString) {
             Devel::String::ToArray(this->m_szString, i_szString);
         }
 
-        CCharArray(const std::string &i_sString) {
+        explicit CCharArray(const std::string &i_sString) {
             Devel::String::ToArray(this->m_szString, i_sString);
         }
 
@@ -33,11 +33,11 @@ namespace Devel {
         }
 
         template<size_t TOtherSize>
-        CCharArray(const CCharArray<TOtherSize> &i_szString) {
+        explicit CCharArray(const CCharArray<TOtherSize> &i_szString) {
             this->operator=(i_szString);
         }
 
-        ~CCharArray() {}
+        ~CCharArray() = default;
 
     public:
         void set(const std::string &i_sString) {
@@ -66,7 +66,7 @@ namespace Devel {
             return &this->first();
         }
 
-        const char *begin() const {
+        [[nodiscard]] const char *begin() const {
             return &this->first();
         }
 
@@ -74,16 +74,16 @@ namespace Devel {
             return &this->first() + Size;
         }
 
-        const char *end() const {
+        [[nodiscard]] const char *end() const {
             return &this->first() + Size;
         }
 
-        const char *c_str() const {
+        [[nodiscard]] const char *c_str() const {
             return this->m_szString;
         }
 
     public:
-        size_t length() const {
+        [[nodiscard]] size_t length() const {
             return Devel::String::Size(this->m_szString, Size);
         }
 
@@ -96,7 +96,7 @@ namespace Devel {
             return this->m_szString[0];
         }
 
-        const char &first() const {
+        [[nodiscard]] const char &first() const {
             return this->m_szString[0];
         }
 
@@ -104,7 +104,7 @@ namespace Devel {
             return this->m_szString[Size - 1];
         }
 
-        const char &last() const {
+        [[nodiscard]] const char &last() const {
             return this->m_szString[Size - 1];
         }
 
@@ -112,12 +112,12 @@ namespace Devel {
             return this->m_szString[i_nIndex];
         }
 
-        const char &at(const size_t i_nIndex) const {
+        [[nodiscard]] const char &at(const size_t i_nIndex) const {
             return this->m_szString[i_nIndex];
         }
 
     public:
-        std::string toStdString() const {
+        [[nodiscard]] std::string toStdString() const {
             return std::string(this->m_szString, this->length());
         }
 
@@ -177,11 +177,11 @@ namespace Devel {
             return !this->compare(i_sString.c_str(), i_sString.length());
         }
 
-        operator char *() {
+        explicit operator char *() {
             return this->m_szString;
         }
 
-        operator const char *() const {
+        explicit operator const char *() const {
             return this->m_szString;
         }
 
@@ -194,6 +194,6 @@ namespace Devel {
         }
 
     private:
-        char m_szString[Size];
+        char m_szString[Size]{};
     };
 }

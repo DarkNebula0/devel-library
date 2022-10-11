@@ -16,9 +16,9 @@ namespace Devel::IO
     {
     public:
         CPath() = default;
-        CPath(fs::path i_oPath) : m_oPath(std::move(i_oPath)) {}
+        explicit CPath(fs::path i_oPath) : m_oPath(std::move(i_oPath)) {}
         CPath(const CPath &i_oPath) { this->operator=(i_oPath); }
-        CPath(CPath &&i_oPath) { this->operator=(std::move(i_oPath)); }
+        CPath(CPath &&i_oPath)  noexcept { this->operator=(std::move(i_oPath)); }
     private:
         fs::path m_oPath;
     public:
@@ -37,37 +37,37 @@ namespace Devel::IO
             return this->m_oPath.replace_extension(i_oExtension);
         }
     public:
-        fs::path getRootName() const
+        [[nodiscard]] fs::path getRootName() const
         {
             return this->m_oPath.root_name();
         }
 
-        fs::path getRootPath() const
+        [[nodiscard]] fs::path getRootPath() const
         {
             return this->m_oPath.root_path();
         }
 
-        fs::path getRelativePath() const
+        [[nodiscard]]  fs::path getRelativePath() const
         {
             return this->m_oPath.relative_path();
         }
 
-        fs::path getParentPath() const
+        [[nodiscard]] fs::path getParentPath() const
         {
             return this->m_oPath.parent_path();
         }
 
-        fs::path getFileNameWithoutExtension() const
+        [[nodiscard]] fs::path getFileNameWithoutExtension() const
         {
             return this->m_oPath.stem();
         }
 
-        fs::path getFileExtension() const
+        [[nodiscard]] fs::path getFileExtension() const
         {
             return this->m_oPath.extension();
         }
 
-        fs::path getAbsolutePath() const
+        [[nodiscard]] fs::path getAbsolutePath() const
         {
             return fs::canonical(this->m_oPath);
         }
@@ -77,62 +77,62 @@ namespace Devel::IO
             return this->m_oPath.remove_filename();
         }
 
-        const fs::path &getPath() const  {
+        [[nodiscard]] const fs::path &getPath() const  {
             return this->m_oPath;
         }
     public:
-        std::string toStdString() const
+        [[nodiscard]] std::string toStdString() const
         {
             return this->m_oPath.generic_string();
         }
 
-        std::wstring toStdWString() const
+        [[nodiscard]] std::wstring toStdWString() const
         {
             return this->m_oPath.wstring();
         }
 
     public:
-        bool hasRootName() const
+        [[nodiscard]] bool hasRootName() const
         {
             return this->m_oPath.has_root_name();
         }
 
-        bool hasRootDirectory() const
+        [[nodiscard]] bool hasRootDirectory() const
         {
             return this->m_oPath.has_root_directory();
         }
 
-        bool hasRelativePath() const
+        [[nodiscard]] bool hasRelativePath() const
         {
             return this->m_oPath.has_relative_path();
         }
 
-        bool hasParentPath() const
+        [[nodiscard]] bool hasParentPath() const
         {
             return this->m_oPath.has_parent_path();
         }
 
-        bool hasFilename() const
+        [[nodiscard]] bool hasFilename() const
         {
             return this->m_oPath.has_filename();
         }
 
-        bool hasFileNameWithoutExtension() const
+        [[nodiscard]] bool hasFileNameWithoutExtension() const
         {
             return this->m_oPath.has_stem();
         }
 
-        bool hasExtension() const
+        [[nodiscard]] bool hasExtension() const
         {
             return this->m_oPath.has_extension();
         }
 
-        bool isAbsolutePath() const
+        [[nodiscard]] bool isAbsolutePath() const
         {
             return this->m_oPath.is_absolute();
         }
 
-        bool isRelativePath() const
+        [[nodiscard]] bool isRelativePath() const
         {
             return this->m_oPath.is_relative();
         }
@@ -148,7 +148,7 @@ namespace Devel::IO
         }
 
     public:
-        bool exists() const
+        [[nodiscard]] bool exists() const
         {
             return CPath::exists(this->m_oPath);
         }

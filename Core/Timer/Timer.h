@@ -7,7 +7,7 @@
 namespace Devel {
     class CTimer {
     public:
-        CTimer(const bool i_fAutoStart = false) {
+        explicit CTimer(const bool i_fAutoStart = false) {
             if (i_fAutoStart) {
                 this->start();
             } else {
@@ -23,14 +23,14 @@ namespace Devel {
         void restart() { return this->start(); }
 
     public:
-        bool hasExpired(const uint64 i_nTimeMs) const {
+        [[nodiscard]] bool hasExpired(const uint64 i_nTimeMs) const {
             return this->isStarted() && (this->elapsed() >= i_nTimeMs);
         }
 
-        bool isStarted() const { return this->m_fIsStarted; }
+        [[nodiscard]] bool isStarted() const { return this->m_fIsStarted; }
 
     public:
-        uint64 elapsed() const;
+        [[nodiscard]] uint64 elapsed() const;
 
     public:
         void clear() { return this->reset(); }
@@ -38,7 +38,7 @@ namespace Devel {
         void reset() { this->m_fIsStarted = false; }
 
     private:
-        bool m_fIsStarted;
+        bool m_fIsStarted{};
 #ifdef _WIN32
         std::chrono::time_point<std::chrono::steady_clock> m_oStartTime;
 #else

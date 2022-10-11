@@ -6,8 +6,7 @@
 #include <string>
 #include <vector>
 
-namespace Devel {
-    namespace String {
+namespace Devel::String {
         inline std::string Repeat(const std::string &i_sString, size_t i_nTimes) {
             std::string sString = i_sString;
 
@@ -51,7 +50,7 @@ namespace Devel {
 
 
         inline std::string Join(const std::vector<std::string> &i_asString, const std::string &i_sDelimeter) {
-            std::string sData = "";
+            std::string sData;
 
             for (const std::string &sString: i_asString) {
                 if (!sData.empty()) {
@@ -111,7 +110,7 @@ namespace Devel {
 
         inline int ToInt(const std::string &i_sBuffer) {
             char *pEnd;
-            return strtol(i_sBuffer.c_str(), &pEnd, 10);
+            return  static_cast<int>(strtol(i_sBuffer.c_str(), &pEnd, 10));
         }
 
         inline unsigned int ToUInt(const std::string &i_sBuffer) {
@@ -132,14 +131,14 @@ namespace Devel {
         inline std::string ToLowerCopy(const std::string &i_sBuffer) {
             std::string sToLower = i_sBuffer;
             for (char &c: sToLower) {
-                c = tolower(c);
+                c = static_cast<char>(tolower(c));
             }
             return sToLower;
         }
 
         inline void ToLower(std::string &i_sBuffer) {
             for (char &c: i_sBuffer) {
-                c = tolower(c);
+                c = static_cast<char>(tolower(c));
             }
         }
 
@@ -147,14 +146,14 @@ namespace Devel {
         inline std::string ToUpperCopy(const std::string &i_sBuffer) {
             std::string sToLower = i_sBuffer;
             for (char &c: sToLower) {
-                c = toupper(c);
+                c = static_cast<char>(toupper(c));
             }
             return sToLower;
         }
 
         inline void ToUpper(std::string &i_sBuffer) {
             for (char &c: i_sBuffer) {
-                c = toupper(c);
+                c = static_cast<char>(toupper(c));
             }
         }
 
@@ -199,9 +198,8 @@ namespace Devel {
 
         inline std::string Get(char *i_pSource, const size_t i_nMaxSize) {
             const size_t nSize = Size(i_pSource, i_nMaxSize);
-            return std::string(i_pSource, nSize);
+            return {i_pSource, nSize};
         }
-
 
         inline size_t Count(const char *i_szString, const size_t i_nSize, const char i_bDelimeter) {
             return std::count(i_szString, i_szString + i_nSize, i_bDelimeter);
@@ -242,4 +240,3 @@ namespace Devel {
             return std::string(achHexString);
         }
     }
-}
