@@ -16,7 +16,7 @@ set(LIBRARY_SRC
         "Core/Timer/Timer.cpp"
         "IO/Dir/Dir.cpp"
         "IO/Buffer/DynamicBuffer/DynamicBuffer.cpp"
-        "Core/Logger/Logger.cpp"
+        "Logging/Logger.cpp"
 )
 
 add_library(Library ${LIBRARY_SRC} ${LIBRARY_HEADER})

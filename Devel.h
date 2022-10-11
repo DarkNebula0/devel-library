@@ -8,7 +8,6 @@
 #include "Core/CharArray/CharArray.h"
 #include "Core/ObjectData/ObjectData.h"
 #include "Core/Singleton/Singleton.h"
-#include "Core/Logger/Logger.h"
 
 #include "IO/Path/Path.h"
 #include "IO/Dir/Dir.h"
@@ -18,3 +17,5 @@
 #include "Threading/Mutex/Mutex.h"
 #include "Threading/LockGuard/LockGuard.h"
 #include "Threading/MutexVector/MutexVector.h"
+
+#include "Logging/Logger.h"

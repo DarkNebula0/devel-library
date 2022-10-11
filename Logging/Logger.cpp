@@ -7,7 +7,7 @@
 #include <ctime>
 #include <rang.hpp>
 
-namespace Devel::Logger
+namespace Devel::Logging
 {
     Devel::Threading::CMutex g_oMutex;
 
@@ -27,14 +27,14 @@ namespace Devel::Logger
 
     void Output(const std::string &i_sWhat, const rang::fg i_eColor)
     {
-        Logger::g_oMutex.lock();
+        Logging::g_oMutex.lock();
         std::cout << i_eColor << i_sWhat << rang::fg::reset << std::endl ;
-        Logger::g_oMutex.unlock();
+        Logging::g_oMutex.unlock();
     }
 }
 
 // Initialize logger=======================================
-void Devel::Logger::Initialize()
+void Devel::Logging::Initialize()
 {
 
     rang::setControlMode(rang::control::Auto);
@@ -42,7 +42,7 @@ void Devel::Logger::Initialize()
 }
 
 // Log=====================================================
-void Devel::Logger::Log(const std::string &i_sMsg, ESeverity i_eSeverity)
+void Devel::Logging::Log(const std::string &i_sMsg, ESeverity i_eSeverity)
 {
     // Set string time
     std::string stOut("[" + DateTime() + "] ");
@@ -85,13 +85,13 @@ void Devel::Logger::Log(const std::string &i_sMsg, ESeverity i_eSeverity)
 }
 
 // New Line=====================================================
-void Devel::Logger::NewLine()
+void Devel::Logging::NewLine()
 {
     Output("", rang::fg::reset);
 }
 
 // Cin Get===================================================
-void Devel::Logger::WaitEnter()
+void Devel::Logging::WaitEnter()
 {
     std::cin.get();
 }

@@ -1,12 +1,13 @@
 #pragma once
 #include "Devel.h"
-#include "Core/Logger/Logger.cpp"
+#include "Logging/Logger.cpp"
+
 #include <catch2/catch_test_macros.hpp>
 
 using namespace Devel;
 
 TEST_CASE( "COLOR_TEST", "[CORE_LOGGER_TEST]" ) {
-    Logger::Initialize();
+    Logging::Initialize();
     LOGE("RED ERROR TEXT ..........");
     LOGW("YELLOW WARNING TEXT ......");
     LOGI("Cyan INFO TEXT ..........");
