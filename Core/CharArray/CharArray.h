@@ -11,11 +11,11 @@ namespace Devel {
                 : m_szString{0} {}
 
         explicit CCharArray(const char *i_szString) {
-            Devel::String::ToArray(this->m_szString, i_szString);
+            Devel::StringUtils::ToArray(this->m_szString, i_szString);
         }
 
         explicit CCharArray(const std::string &i_sString) {
-            Devel::String::ToArray(this->m_szString, i_sString);
+            Devel::StringUtils::ToArray(this->m_szString, i_sString);
         }
 
         CCharArray(std::initializer_list<char> i_oList) {
@@ -25,7 +25,7 @@ namespace Devel {
                 nSize = Size;
             }
 
-            Devel::String::ToArray(this->m_szString, i_oList.begin(), nSize);
+            Devel::StringUtils::ToArray(this->m_szString, i_oList.begin(), nSize);
         }
 
         CCharArray(const CCharArray<Size> &i_szString) {
@@ -41,15 +41,15 @@ namespace Devel {
 
     public:
         void set(const std::string &i_sString) {
-            Devel::String::ToArray(this->m_szString, i_sString);
+            Devel::StringUtils::ToArray(this->m_szString, i_sString);
         }
 
         void set(const char *i_szString, size_t i_nSize) {
-            Devel::String::ToArray(this->m_szString, i_szString, i_nSize);
+            Devel::StringUtils::ToArray(this->m_szString, i_szString, i_nSize);
         }
 
         void set(const char *i_szString) {
-            Devel::String::ToArray(this->m_szString, i_szString);
+            Devel::StringUtils::ToArray(this->m_szString, i_szString);
         }
 
         void set(const CCharArray<Size> &i_szString) {
@@ -84,7 +84,7 @@ namespace Devel {
 
     public:
         [[nodiscard]] size_t length() const {
-            return Devel::String::Size(this->m_szString, Size);
+            return Devel::StringUtils::Size(this->m_szString, Size);
         }
 
         static constexpr size_t maxLength() {
