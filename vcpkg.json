@@ -4,6 +4,7 @@
   "dependencies": [
     "boost-random",
     "boost-asio",
-    "catch2"
+    "catch2",
+    "rang"
   ]
 }

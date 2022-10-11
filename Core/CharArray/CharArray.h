@@ -177,11 +177,11 @@ namespace Devel {
             return !this->compare(i_sString.c_str(), i_sString.length());
         }
 
-        explicit operator char *() {
-            return this->m_szString;
+        operator char *() {
+            return &this->m_szString[0];
         }
 
-        explicit operator const char *() const {
+        operator const char *() const {
             return this->m_szString;
         }
 

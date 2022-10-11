@@ -4,3 +4,4 @@
 #include "Timer_Test.h"
 #include "Buffer_Test.h"
 #include "Path_Test.h"
+#include "Logger_Test.h"

@@ -1,5 +1,5 @@
 #pragma once
-#include "Core.h"
+#include "Devel.h"
 #include <catch2/catch_test_macros.hpp>
 
 using namespace Devel;
@@ -16,4 +16,5 @@ TEST_CASE( "Test char array value", "[CHAR_ARRAY_TEST]" ) {
 
     REQUIRE( oCharArray.length() ==5 );
     REQUIRE( oCharArray.maxLength()== 5 );
+    REQUIRE( oCharArray == "Hello" );
 }

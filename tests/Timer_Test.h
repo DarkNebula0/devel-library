@@ -1,5 +1,5 @@
 #pragma once
-#include "Core.h"
+#include "Devel.h"
 #include "Core/Timer/Timer.cpp"
 #include <catch2/catch_test_macros.hpp>
 

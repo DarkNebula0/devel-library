@@ -11,11 +11,11 @@ Set(TEST_SRC "main.cpp" )
 set(TEST_INCLUDE_DIR "../"  )
 
 find_package(Catch2 3 REQUIRED)
-
+find_path(RANG_INCLUDE_DIRS "rang.hpp")
 
 add_executable(lib-tests ${TEST_SRC} ${TEST_HEADER})
 set_property(TARGET lib-tests PROPERTY CXX_STANDARD 20)
-target_include_directories(lib-tests PUBLIC ${CMAKE_SOURCE_DIR} ${TEST_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(lib-tests PUBLIC ${CMAKE_SOURCE_DIR} ${TEST_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR} ${RANG_INCLUDE_DIRS})
 target_link_libraries(lib-tests PRIVATE Catch2::Catch2WithMain)
 
 include(CTest)

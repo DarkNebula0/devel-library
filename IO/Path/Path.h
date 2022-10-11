@@ -6,11 +6,7 @@
 
 namespace Devel::IO
 {
-#ifdef _WIN32
-    namespace fs = std::experimental::filesystem;
-#else
     namespace fs = std::filesystem;
-#endif
 
     class CPath
     {
