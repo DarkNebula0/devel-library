@@ -2,7 +2,8 @@
 #include "Core/Global.h"
 #include "Core/Exceptions.h"
 #include "Core/Random.h"
-#include "Core/StringExtension.h"
+#include "Core/Utils/StringUtils.h"
+#include "Core/Utils/VectorUtils.h"
 #include "Core/Timer/Timer.h"
 #include "Core/CharArray/CharArray.h"
 #include "Core/ObjectData/ObjectData.h"
@@ -14,5 +15,6 @@
 #include "IO/Buffer/Buffer.h"
 #include "IO/Buffer/DynamicBuffer/DynamicBuffer.h"
 
-#include "Mutex/Mutex/Mutex.h"
-#include "Mutex/LockGuard/LockGuard.h"
+#include "Threading/Mutex/Mutex.h"
+#include "Threading/LockGuard/LockGuard.h"
+#include "Threading/MutexVector/MutexVector.h"

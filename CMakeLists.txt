@@ -16,15 +16,8 @@ set(LIBRARY_SRC
         "Core/Timer/Timer.cpp"
         "IO/Dir/Dir.cpp"
         "IO/Buffer/DynamicBuffer/DynamicBuffer.cpp"
-        "Core/Logger/Logger.cpp")
-
-set(LIBRARY_INCLUDE_DIR
-        "Core/Singleton"
-        "Core/CharArray"
-        "Core/Timer"
-        "Core/ObjectData"
-        )
-
+        "Core/Logger/Logger.cpp"
+)
 
 add_library(Library ${LIBRARY_SRC} ${LIBRARY_HEADER})
 set_property(TARGET Library PROPERTY CXX_STANDARD 20)

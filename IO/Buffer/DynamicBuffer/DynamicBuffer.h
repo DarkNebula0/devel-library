@@ -11,7 +11,7 @@ namespace Devel::IO
         CDynamicBuffer(const CDynamicBuffer &i_oOther){
             this->operator=(i_oOther);
         }
-        CDynamicBuffer(CDynamicBuffer &&i_oOther){
+        CDynamicBuffer(CDynamicBuffer &&i_oOther) noexcept {
             this->operator=(std::move(i_oOther));
         }
         virtual ~CDynamicBuffer();
@@ -48,7 +48,7 @@ namespace Devel::IO
             memcpy(this->m_pBuffer, i_oOther.m_pBuffer, this->m_nSize);
         }
 
-        void operator=(CDynamicBuffer &&i_oOther)
+        void operator=(CDynamicBuffer &&i_oOther) noexcept
         {
             this->m_pBuffer = i_oOther.m_pBuffer;
             this->m_nSize = i_oOther.m_nSize;

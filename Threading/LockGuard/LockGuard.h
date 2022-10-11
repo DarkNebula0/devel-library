@@ -1,5 +1,5 @@
 #pragma once
-#include "Mutex/Mutex/Mutex.h"
+#include "Threading/Mutex/Mutex.h"
 
 class CLockGuard
 {

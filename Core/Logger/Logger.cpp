@@ -1,7 +1,7 @@
 #include "Logger.h"
 #include "Core/Global.h"
 #include "Core/Typedef.h"
-#include "Mutex/Mutex/Mutex.h"
+#include "Threading/Mutex/Mutex.h"
 
 #include <iostream>
 #include <ctime>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Global.h"
-#include "Core/StringExtension.h"
+#include "Core/Utils/StringUtils.h"
 
 namespace Devel {
     template<size_t Size>
