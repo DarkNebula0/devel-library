@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-namespace Devel {
+namespace Devel::VectorUtils {
 	template<typename T>
 	bool IsDataInVector(const std::vector<T>& i_atVector, const T& i_tData, size_t* i_pOutIndex = nullptr)
 	{
