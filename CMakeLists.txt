@@ -7,7 +7,7 @@ project(Library)
 cmake_minimum_required (VERSION 3.8)
 
 ## Packages
-find_package(Boost 1.80.0 REQUIRED COMPONENTS random)
+find_package(Boost 1.80.0 REQUIRED)
 find_path(RANG_INCLUDE_DIRS "rang.hpp")
 
 set(LIBRARY_HEADER "Devel.h")
@@ -17,6 +17,7 @@ set(LIBRARY_SRC
         "IO/Dir/Dir.cpp"
         "IO/Buffer/DynamicBuffer/DynamicBuffer.cpp"
         "Logging/Logger.cpp"
+        "Threading/ThreadPool/ThreadPool.cpp"
 )
 
 add_library(Library ${LIBRARY_SRC} ${LIBRARY_HEADER})

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <functional>
 #include <vector>
 
@@ -6,404 +7,348 @@
 #include "Core/Exceptions.h"
 
 #define MutexVectorLockGuard(x) RecursiveLockGuard(x.mutex())
-#define MutexVectorLock(x)		RecursiveLockGuard(x.mutex().lock())
-#define MutexVectorUnlock(x)	RecursiveLockGuard(x.mutex().unlock())
+#define MutexVectorLock(x)        RecursiveLockGuard(x.mutex().lock())
+#define MutexVectorUnlock(x)    RecursiveLockGuard(x.mutex().unlock())
 
 namespace Devel::Threading {
-	template <typename T>
-	class CMutexVector
-	{
+    template<typename T>
+    class CMutexVector {
 #define InClassLock() RecursiveLockGuard(this->m_oMutex)
 
-		CreateFastException(CNoEntryFoundException, "No entry found!");
-		CreateFastException(CIndexOutOfRangeException, "Passed index is out of range!");
-	public:
-		CMutexVector() = default;
+        CreateFastException(CNoEntryFoundException, "No entry found!");
 
-		CMutexVector(std::vector<T>& i_oVector)
-		{
-			this->operator=(i_oVector);
-		}
-		CMutexVector(std::vector<T>&& i_oVector)
-		{
-			this->operator=(std::move(i_oVector));
-		}
+        CreateFastException(CIndexOutOfRangeException, "Passed index is out of range!");
+    public:
+        CMutexVector() = default;
 
-		CMutexVector(const CMutexVector<T>& i_oVector)
-		{
-			this->operator=(i_oVector);
-		}
-		CMutexVector(CMutexVector<T>&& i_oVector)
-		{
-			this->operator=(std::move(i_oVector));
-		}
+        explicit CMutexVector(std::vector<T> &i_oVector) {
+            this->operator=(i_oVector);
+        }
 
-		virtual ~CMutexVector() = default;
+        explicit CMutexVector(std::vector<T> &&i_oVector) {
+            this->operator=(std::move(i_oVector));
+        }
 
-	public:
-		typedef std::function<bool(const T&)> FnMatch;
+        CMutexVector(const CMutexVector<T> &i_oVector) {
+            this->operator=(i_oVector);
+        }
 
-		bool removeAll(FnMatch i_fnMatch)
-		{
-			bool fWasSuccessful = false;
+        CMutexVector(CMutexVector<T> &&i_oVector)
+        noexcept {
+            this->operator=(std::move(i_oVector));
+        }
 
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize;)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					nSize--;
-					this->removeAt(i);
-					fWasSuccessful = true;
-				}
-				else
-				{
-					i++;
-				}
-			}
+        virtual ~CMutexVector() = default;
 
-			return fWasSuccessful;
-		}
-		bool removeOne(FnMatch i_fnMatch)
-		{
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					this->removeAt(i);
-					return true;
-				}
-			}
+    public:
+        typedef std::function<bool(const T &)> FnMatch;
 
-			return false;
-		}
-		bool remove(FnMatch i_fnMatch)
-		{
-			return this->removeOne(i_fnMatch);
-		}
+        bool removeAll(FnMatch i_fnMatch) {
+            bool fWasSuccessful = false;
+
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize;) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    nSize--;
+                    this->removeAt(i);
+                    fWasSuccessful = true;
+                } else {
+                    i++;
+                }
+            }
+
+            return fWasSuccessful;
+        }
+
+        bool removeOne(FnMatch i_fnMatch) {
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    this->removeAt(i);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        bool remove(FnMatch i_fnMatch) {
+            return this->removeOne(i_fnMatch);
+        }
 
 
-		T find(FnMatch i_fnMatch) const
-		{
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					return this->m_atVector[i];
-				}
-			}
+        T find(FnMatch i_fnMatch) const {
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    return this->m_atVector[i];
+                }
+            }
 
-			throw CNoEntryFoundException();
-		}
-		T get(FnMatch i_fnMatch) const
-		{
-			return this->find(i_fnMatch);
-		}
+            throw CNoEntryFoundException();
+        }
 
-		std::vector<T> findAll(FnMatch i_fnMatch) const
-		{
-			std::vector<T> atData;
+        T get(FnMatch i_fnMatch) const {
+            return this->find(i_fnMatch);
+        }
 
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					atData.push_back(this->m_atVector[i]);
-				}
-			}
+        std::vector<T> findAll(FnMatch i_fnMatch) const {
+            std::vector<T> atData;
 
-			return atData;
-		}
-		std::vector<T> getAll(FnMatch i_fnMatch) const
-		{
-			return this->findAll(i_fnMatch);
-		}
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    atData.push_back(this->m_atVector[i]);
+                }
+            }
+
+            return atData;
+        }
+
+        std::vector<T> getAll(FnMatch i_fnMatch) const {
+            return this->findAll(i_fnMatch);
+        }
 
 
-		size_t findIndex(FnMatch i_fnMatch) const
-		{
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					return i;
-				}
-			}
+        size_t findIndex(FnMatch i_fnMatch) const {
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    return i;
+                }
+            }
 
-			return (~0);
-		}
-		size_t indexOf(FnMatch i_fnMatch) const
-		{
-			return this->findIndex(i_fnMatch);
-		}
+            return (~0);
+        }
 
-		std::vector<size_t> findIndexAll(FnMatch i_fnMatch) const
-		{
-			std::vector<size_t> anIndexes;
+        size_t indexOf(FnMatch i_fnMatch) const {
+            return this->findIndex(i_fnMatch);
+        }
 
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					anIndexes.push_back(i);
-				}
-			}
+        std::vector<size_t> findIndexAll(FnMatch i_fnMatch) const {
+            std::vector<size_t> anIndexes;
 
-			return anIndexes;
-		}
-		std::vector<size_t> indexOfAll(FnMatch i_fnMatch) const
-		{
-			return this->findIndexAll(i_fnMatch);
-		}
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    anIndexes.push_back(i);
+                }
+            }
+
+            return anIndexes;
+        }
+
+        std::vector<size_t> indexOfAll(FnMatch i_fnMatch) const {
+            return this->findIndexAll(i_fnMatch);
+        }
 
 
-		T take(FnMatch i_fnMatch) const
-		{
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					T tData = this->m_atVector[i];
-					this->removeAt(i);
-					return tData;
-				}
-			}
+        T take(FnMatch i_fnMatch) const {
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    T tData = this->m_atVector[i];
+                    this->removeAt(i);
+                    return tData;
+                }
+            }
 
-			throw CNoEntryFoundException();
-		}
-		std::vector<T> takeAll(FnMatch i_fnMatch) const
-		{
-			std::vector<T> atData;
+            throw CNoEntryFoundException();
+        }
 
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize;)
-			{
-				if (i_fnMatch(this->m_atVector[i]))
-				{
-					atData.push_back(this->m_atVector[i]);
-					this->removeAt(i);
-					nSize--;
-				}
-				else
-				{
-					i++;
-				}
-			}
+        std::vector<T> takeAll(FnMatch i_fnMatch) const {
+            std::vector<T> atData;
 
-			return atData;
-		}
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize;) {
+                if (i_fnMatch(this->m_atVector[i])) {
+                    atData.push_back(this->m_atVector[i]);
+                    this->removeAt(i);
+                    nSize--;
+                } else {
+                    i++;
+                }
+            }
 
-	public:
-		const CMutex& mutex() const
-		{
-			return this->m_oMutex;
-		}
+            return atData;
+        }
 
-		const std::vector<T>& rawVector() const
-		{
-			return this->m_atVector;
-		}
+    public:
+        const CMutex &mutex() const {
+            return this->m_oMutex;
+        }
 
-		auto begin() const
-		{
-			return this->m_atVector.begin();
-		}
+        const std::vector<T> &rawVector() const {
+            return this->m_atVector;
+        }
 
-		auto end() const
-		{
-			return this->m_atVector.end();
-		}
+        auto begin() const {
+            return this->m_atVector.begin();
+        }
 
-		auto cbegin() const
-		{
-			return this->m_atVector.cbegin();
-		}
+        auto end() const {
+            return this->m_atVector.end();
+        }
 
-		auto cend() const
-		{
-			return this->m_atVector.cend();
-		}
+        auto cbegin() const {
+            return this->m_atVector.cbegin();
+        }
 
-		size_t size() const
-		{
-			return this->m_atVector.size();
-		}
+        auto cend() const {
+            return this->m_atVector.cend();
+        }
 
-		bool isEmpty() const
-		{
-			return this->m_atVector.empty();
-		}
+        size_t size() const {
+            return this->m_atVector.size();
+        }
 
-		T& first()
-		{
-			return *this->m_atVector.begin();
-		}
+        bool isEmpty() const {
+            return this->m_atVector.empty();
+        }
 
-		T& last()
-		{
-			return *(this->end() - 1);
-		}
+        T &first() {
+            return *this->m_atVector.begin();
+        }
 
-		T& at(const size_t i_nIndex)
-		{
-			return this->operator[](i_nIndex);
-		}
+        T &last() {
+            return *(this->end() - 1);
+        }
 
-		std::vector<T> toStdVector() const
-		{
-			return this->m_atVector;
-		}
+        T &at(const size_t i_nIndex) {
+            return this->operator[](i_nIndex);
+        }
 
-		bool contains(const T& i_oValue) const
-		{
-			InClassLock();
-			for (const T& tValue : this->m_atVector)
-			{
-				if (tValue == i_oValue)
-				{
-					return true;
-				}
-			}
+        std::vector<T> toStdVector() const {
+            return this->m_atVector;
+        }
 
-			return false;
-		}
+        bool contains(const T &i_oValue) const {
+            InClassLock();
+            for (const T &tValue: this->m_atVector) {
+                if (tValue == i_oValue) {
+                    return true;
+                }
+            }
 
-	public:
-		void resize(const size_t i_nSize)
-		{
-			InClassLock();
-			return this->m_atVector.resize(i_nSize);
-		}
+            return false;
+        }
 
-		void reserve(const size_t i_nSize)
-		{
-			InClassLock();
-			return this->m_atVector.reserve(i_nSize);
-		}
+    public:
+        void resize(const size_t i_nSize) {
+            InClassLock();
+            return this->m_atVector.resize(i_nSize);
+        }
 
-		void push_back(const T& i_oValue)
-		{
-			InClassLock();
-			return this->m_atVector.push_back(i_oValue);
-		}
+        void reserve(const size_t i_nSize) {
+            InClassLock();
+            return this->m_atVector.reserve(i_nSize);
+        }
 
-		void push_back(T&& i_oValue)
-		{
-			InClassLock();
-			return this->m_atVector.push_back(std::move(i_oValue));
-		}
+        void push_back(const T &i_oValue) {
+            InClassLock();
+            return this->m_atVector.push_back(i_oValue);
+        }
 
-		void push_back(const std::vector<T>& i_atValue)
-		{
-			for (const T& oItem : i_atValue)
-			{
-				this->push_back(oItem);
-			}
-		}
-		void push_back(std::vector<T>&& i_atValue)
-		{
-			for (const T& oItem : i_atValue)
-			{
-				this->push_back(std::move(oItem));
-			}
-		}
+        void push_back(T &&i_oValue) {
+            InClassLock();
+            return this->m_atVector.push_back(std::move(i_oValue));
+        }
 
-		void push_back(const CMutexVector<T>& i_atValue)
-		{
-			MutexVectorLockGuard(i_atValue);
-			return this->push_back(i_atValue.rawVector());
-		}
-		void push_back(CMutexVector<T>&& i_atValue)
-		{
-			return this->push_back(std::move(i_atValue.rawVector()));
-		}
+        void push_back(const std::vector<T> &i_atValue) {
+            for (const T &oItem: i_atValue) {
+                this->push_back(oItem);
+            }
+        }
 
-	public:
-		bool removeAt(const size_t i_nIndex)
-		{
-			InClassLock();
-			if (i_nIndex > this->size()) {
-				return false;
-			}
+        void push_back(std::vector<T> &&i_atValue) {
+            for (const T &oItem: i_atValue) {
+                this->push_back(std::move(oItem));
+            }
+        }
 
-			this->m_atVector.erase(this->begin() + i_nIndex);
+        void push_back(const CMutexVector<T> &i_atValue) {
+            MutexVectorLockGuard(i_atValue);
+            return this->push_back(i_atValue.rawVector());
+        }
 
-			return true;
-		}
+        void push_back(CMutexVector<T> &&i_atValue) {
+            return this->push_back(std::move(i_atValue.rawVector()));
+        }
 
-		bool remove(const T& i_oValue)
-		{
-			InClassLock();
-			for (size_t i = 0, nSize = this->size(); i < nSize; i++)
-			{
-				if (this->m_atVector[i] == i_oValue) {
-					this->removeAt(i);
-					return true;
-				}
-			}
-			return false;
-		}
+    public:
+        bool removeAt(const size_t i_nIndex) {
+            InClassLock();
+            if (i_nIndex > this->size()) {
+                return false;
+            }
 
-		void clear()
-		{
-			InClassLock();
-			this->m_atVector.clear();
-		}
+            this->m_atVector.erase(this->begin() + i_nIndex);
 
-	public:
-		void operator=(const std::vector<T>& i_tOther)
-		{
-			InClassLock();
-			this->m_atVector = i_tOther;
-		}
+            return true;
+        }
 
-		void operator=(std::vector<T>&& i_tOther)
-		{
-			InClassLock();
-			this->m_atVector = std::move(i_tOther);
-		}
+        bool remove(const T &i_oValue) {
+            InClassLock();
+            for (size_t i = 0, nSize = this->size(); i < nSize; i++) {
+                if (this->m_atVector[i] == i_oValue) {
+                    this->removeAt(i);
+                    return true;
+                }
+            }
+            return false;
+        }
 
-		void operator=(const CMutexVector<T>& i_tOther)
-		{
-			InClassLock();
-			MutexVectorLockGuard(i_tOther);
-			this->operator=(i_tOther.rawVector());
-		}
-		void operator=(CMutexVector<T>&& i_tOther)
-		{
-			InClassLock();
-			MutexVectorLockGuard(i_tOther);
-			this->operator=(std::move(i_tOther.rawVector()));
-		}
+        void clear() {
+            InClassLock();
+            this->m_atVector.clear();
+        }
 
-		T& operator[](const size_t i_nIndex)
-		{
-			if (i_nIndex >= this->size())
-			{
-				throw CIndexOutOfRangeException();
-			}
+    public:
+        CMutexVector &operator=(const std::vector<T> &i_tOther) {
+            InClassLock();
+            this->m_atVector = i_tOther;
+            return *this;
+        }
 
-			return this->m_atVector[i_nIndex];
-		}
+        CMutexVector &operator=(std::vector<T> &&i_tOther) {
+            InClassLock();
+            this->m_atVector = std::move(i_tOther);
+            return *this;
+        }
 
-		const T& operator[](const size_t i_nIndex) const
-		{
-			if (i_nIndex >= this->size())
-			{
-				throw CIndexOutOfRangeException();
-			}
+        CMutexVector &operator=(const CMutexVector<T> &i_tOther) {
+            InClassLock();
+            MutexVectorLockGuard(i_tOther);
+            this->operator=(i_tOther.rawVector());
+            return *this;
+        }
 
-			return this->m_atVector[i_nIndex];
-		}
+        CMutexVector &operator=(CMutexVector<T> &&i_tOther)
+        noexcept {
+            InClassLock();
+            MutexVectorLockGuard(i_tOther);
+            this->operator=(std::move(i_tOther.rawVector()));
+            return *this;
+        }
 
-	private:
-		CMutex				m_oMutex;
-		std::vector<T>		m_atVector;
-	};
+        T &operator[](const size_t i_nIndex) {
+            if (i_nIndex >= this->size()) {
+                throw CIndexOutOfRangeException();
+            }
+
+            return this->m_atVector[i_nIndex];
+        }
+
+        const T &operator[](const size_t i_nIndex) const {
+            if (i_nIndex >= this->size()) {
+                throw CIndexOutOfRangeException();
+            }
+
+            return this->m_atVector[i_nIndex];
+        }
+
+    private:
+        CMutex m_oMutex;
+        std::vector<T> m_atVector;
+    };
 }

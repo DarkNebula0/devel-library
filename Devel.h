@@ -14,8 +14,11 @@
 #include "IO/Buffer/Buffer.h"
 #include "IO/Buffer/DynamicBuffer/DynamicBuffer.h"
 
+#include "Threading/ThreadUtils.h"
 #include "Threading/Mutex/Mutex.h"
 #include "Threading/LockGuard/LockGuard.h"
 #include "Threading/MutexVector/MutexVector.h"
+#include "Threading/SafeQueue/SafeQueue.h"
+#include "Threading/ThreadPool/ThreadPool.h"
 
 #include "Logging/Logger.h"

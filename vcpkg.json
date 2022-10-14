@@ -2,7 +2,6 @@
   "name": "devel-lib",
   "version-string": "0.1.0",
   "dependencies": [
-    "boost-random",
     "boost-asio",
     "catch2",
     "rang"

@@ -1,27 +1,25 @@
 #pragma once
+
 #include <mutex>
 
 namespace Devel::Threading {
-    class CMutex
-    {
+    class CMutex {
     public:
         CMutex() = default;
+
         virtual ~CMutex() = default;
 
     public:
-        void lock() const
-        {
+        void lock() const {
             return this->m_oMutex.lock();
         }
 
-        void unlock() const
-        {
+        void unlock() const {
 
             return this->m_oMutex.unlock();
         }
 
-        bool tryLock() const
-        {
+        bool tryLock() const {
             return this->m_oMutex.try_lock();
         }
 

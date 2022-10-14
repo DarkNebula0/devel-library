@@ -1,22 +1,23 @@
 #pragma once
+
+#include "Core/Global.h"
 #include "Threading/Mutex/Mutex.h"
 
 namespace Devel::Threading {
-    class CLockGuard
-    {
+#define RecursiveLockGuard(x)    CLockGuard CatUniqueVar(locker, __COUNTER__)(x);
+
+    class CLockGuard {
     public:
-        CLockGuard(const CMutex& i_oMutex)
-            : m_oMutex(i_oMutex)
-        {
+        CLockGuard(const CMutex &i_oMutex)
+                : m_oMutex(i_oMutex) {
             this->m_oMutex.lock();
         }
 
-        ~CLockGuard()
-        {
+        ~CLockGuard() {
             this->m_oMutex.unlock();
         }
 
     private:
-        const CMutex& m_oMutex;
+        const CMutex &m_oMutex;
     };
 }
