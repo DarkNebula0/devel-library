@@ -1,6 +1,5 @@
 #pragma once
 #include "Devel.h"
-#include "IO/Buffer/DynamicBuffer/DynamicBuffer.cpp"
 #include <catch2/catch_test_macros.hpp>
 
 using namespace Devel::IO;

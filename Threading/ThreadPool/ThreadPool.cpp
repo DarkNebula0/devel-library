@@ -47,7 +47,7 @@ void Devel::Threading::CThreadPool::handleWorker() {
 
         try {
             fnTask = this->m_aoTasks.dequeue();
-        } catch (const CNoEntryFoundException &) {}
+        } catch (const std::range_error &) {}
 
         if (fnTask) {
             fnTask();

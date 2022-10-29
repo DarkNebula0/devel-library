@@ -13,6 +13,11 @@
 #include "IO/Dir/Dir.h"
 #include "IO/Buffer/Buffer.h"
 #include "IO/Buffer/DynamicBuffer/DynamicBuffer.h"
+#include "IO/ReadStream/ReadStream.h"
+#include "IO/WriteStream/WriteStream.h"
+#include "IO/JsonObject/JsonObject.h"
+#include "IO/JsonArray/JsonArray.h"
+#include "IO/JsonDocument/JsonDocument.h"
 
 #include "Threading/ThreadUtils.h"
 #include "Threading/Mutex/Mutex.h"
@@ -20,5 +25,8 @@
 #include "Threading/MutexVector/MutexVector.h"
 #include "Threading/SafeQueue/SafeQueue.h"
 #include "Threading/ThreadPool/ThreadPool.h"
+
+#include "Serializing/SerializingDefines.h"
+#include "Serializing/Serializing.h"
 
 #include "Logging/Logger.h"

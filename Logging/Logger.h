@@ -22,7 +22,7 @@ namespace Devel::Logging
     void NewLine();
     void WaitEnter();
 
-    __inline void LogDebug(const std::string &i_sMsg, const ESeverity i_eSeverity = None)
+    inline void LogDebug(const std::string &i_sMsg, const ESeverity i_eSeverity = None)
     {
 #ifdef _DEBUG
         return Log("[Dbg]: " + i_sMsg, i_eSeverity);

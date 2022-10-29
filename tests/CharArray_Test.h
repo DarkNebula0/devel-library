@@ -4,13 +4,13 @@
 
 using namespace Devel;
 
-TEST_CASE( "Test char array length", "[CHAR_ARRAY_TEST]" ) {
+TEST_CASE( "TEST_CHARARRAY_LENGTH", "[CHAR_ARRAY_TEST]" ) {
     CCharArray<15> oCharArray;
     REQUIRE( oCharArray.length() ==0 );
     REQUIRE( oCharArray.maxLength()== 15 );
 }
 
-TEST_CASE( "Test char array value", "[CHAR_ARRAY_TEST]" ) {
+TEST_CASE( "TEST_CHARARRAY_VALUE", "[CHAR_ARRAY_TEST]" ) {
     CCharArray<5> oCharArray;
     oCharArray = "Hello Word";
 

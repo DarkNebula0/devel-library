@@ -12,8 +12,6 @@
 #define SafeQueueUnlock(x)        x.mutex().unlock()
 
 namespace Devel::Threading {
-    CreateFastException(CNoEntryFoundException, "No entry found!");
-
     template<class T>
     class CSafeQueue {
     public:
@@ -55,7 +53,7 @@ namespace Devel::Threading {
             RecursiveLockGuard(this->m_oMutex);
 
             if (this->isEmpty()) {
-                throw CNoEntryFoundException();
+                throw NoEntryFoundException;
             }
 
             return (i_fMove ? std::move(this->m_aQueue.front()) : this->m_aQueue.front());
@@ -65,7 +63,7 @@ namespace Devel::Threading {
             RecursiveLockGuard(this->m_oMutex);
 
             if (this->isEmpty()) {
-                throw CNoEntryFoundException();
+                throw NoEntryFoundException;
             }
 
             this->m_aQueue.pop();
@@ -78,7 +76,7 @@ namespace Devel::Threading {
                 while (true) {
                     this->pop();
                 }
-            } catch (const CNoEntryFoundException &) {}
+            } catch (const std::range_error &) {}
         }
 
     private:

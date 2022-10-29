@@ -1,6 +1,5 @@
 #pragma once
 #include "Devel.h"
-#include "Logging/Logger.cpp"
 
 #include <catch2/catch_test_macros.hpp>
 

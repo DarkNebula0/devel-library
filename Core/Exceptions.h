@@ -1,16 +1,8 @@
 #pragma once
-
-#include <exception>
-
-#define CreateFastException(Name, ErrorMessage)     class Name : public std::exception                      \
-                                                    {                                                       \
-                                                    public:                                                 \
-                                                        const char *what() const throw()                    \
-                                                        {                                                   \
-                                                            return ErrorMessage;                            \
-                                                        }                                                   \
-                                                    };
+#include <stdexcept>
 
 namespace Devel {
-    CreateFastException(CIndexOutOfRangeException, "Index is out of range!");
+    static auto IndexOutOfRangeException = std::range_error("Index out of range!");
+    static auto NoEntryFoundException = std::range_error( "No entry found!");
+    static auto ShouldNotExecuteException = std::logic_error("This Code should not get executed!");
 }

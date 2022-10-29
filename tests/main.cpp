@@ -5,3 +5,5 @@
 #include "Buffer_Test.h"
 #include "Path_Test.h"
 #include "Logger_Test.h"
+#include "Serializing_Test.h"
+#include "Json_Test.h"

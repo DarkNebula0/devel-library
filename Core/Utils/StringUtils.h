@@ -17,7 +17,6 @@ namespace Devel::StringUtils {
         return sString;
     }
 
-
     // When you don't pass a length(means -1), the string has to be zero terminated!
     inline std::vector<std::string>
     Split(const char *i_szString, size_t i_nLength, const char i_bDelimeter, const size_t i_nReserve = -1) {

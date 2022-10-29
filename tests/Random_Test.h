@@ -4,21 +4,16 @@
 
 using namespace Devel;
 
-TEST_CASE( "unique", "[Random]" ) {
-    Random::Generate(15, 30);
-    REQUIRE( Random::Generate(15, 30) != Random::Generate(15, 30));
-}
-
-TEST_CASE( "range", "[Random]" ) {
+TEST_CASE( "RANGE", "[Random]" ) {
     REQUIRE( Random::Generate(15, 30) <= 30);
     REQUIRE( Random::Generate(15, 30) >= 14);
 }
 
-TEST_CASE( "test unique uuid", "[Random]" ) {
+TEST_CASE( "TEST_UNIQUE_UUID", "[Random]" ) {
     REQUIRE( Random::GenerateUUID() != Random::GenerateUUID());
 }
 
-TEST_CASE( "uuid structure", "[Random]" ) {
+TEST_CASE( "TEST_UUID_STRUCTURE", "[Random]" ) {
     auto uuid = Random::GenerateUUID();
     REQUIRE( uuid.length() == 36);
     REQUIRE( uuid[8] == '-');

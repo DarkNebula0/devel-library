@@ -7,7 +7,16 @@ project(tests)
 cmake_minimum_required (VERSION 3.8)
 
 Set(TEST_HEADER "")
-Set(TEST_SRC "main.cpp" )
+Set(TEST_SRC
+        "main.cpp"
+        "../IO/Buffer/DynamicBuffer/DynamicBuffer.cpp"
+        "../IO/JsonObject/JsonObject.cpp"
+        "../IO/JsonDocument/JsonDocument.cpp"
+        "../IO/WriteStream/WriteStream.cpp"
+        "../IO/ReadStream/ReadStream.cpp"
+        "../Logging/Logger.cpp"
+        "../Core/Timer/Timer.cpp"
+        )
 set(TEST_INCLUDE_DIR "../"  )
 
 find_package(Catch2 3 REQUIRED)

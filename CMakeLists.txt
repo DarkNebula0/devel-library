@@ -18,7 +18,11 @@ set(LIBRARY_SRC
         "IO/Buffer/DynamicBuffer/DynamicBuffer.cpp"
         "Logging/Logger.cpp"
         "Threading/ThreadPool/ThreadPool.cpp"
-)
+        "IO/ReadStream/ReadStream.cpp"
+        "IO/WriteStream/WriteStream.cpp"
+        "IO/JsonObject/JsonObject.cpp"
+        "IO/JsonDocument/JsonDocument.cpp"
+        Serializing/Json/JsonFieldName.h)
 
 add_library(Library ${LIBRARY_SRC} ${LIBRARY_HEADER})
 set_property(TARGET Library PROPERTY CXX_STANDARD 20)
