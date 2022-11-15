@@ -4,20 +4,49 @@
 #include "Core/Utils/StringUtils.h"
 
 namespace Devel {
+    /**
+     * @brief The CCharArray class
+     * @tparam Size Size of the char array
+     *
+     * The CCharArray class is a type wrapper and a high-level programming interface for char arrays.
+     */
     template<size_t Size>
     class CCharArray {
     public:
+        /**
+         * @brief Default constructor
+         *
+         * Constructs a new CCharArray object.
+         */
         CCharArray()
                 : m_szString{0} {}
 
+        /**
+         * @brief Explicit constructor
+         * @param i_szString The char pointer to copy
+         *
+         * Constructs a new CCharArray object.
+         */
         explicit CCharArray(const char *i_szString) {
             Devel::StringUtils::ToArray(this->m_szString, i_szString);
         }
 
+        /**
+        * @brief Explicit constructor
+        * @param i_szString The string to copy
+        *
+        * Constructs a new CCharArray object.
+        */
         explicit CCharArray(const std::string &i_sString) {
             Devel::StringUtils::ToArray(this->m_szString, i_sString);
         }
 
+        /**
+         * @brief Initializer list constructor
+         * @param i_oList initializer list
+         *
+         * Constructs a new CCharArray object.
+         */
         CCharArray(std::initializer_list<char> i_oList) {
             size_t nSize = i_oList.size();
 
@@ -28,10 +57,22 @@ namespace Devel {
             Devel::StringUtils::ToArray(this->m_szString, i_oList.begin(), nSize);
         }
 
+        /**
+         * @brief Copy constructor
+         * @param i_szString The char array to copy
+         *
+         * Constructs a new CCharArray object.
+         */
         CCharArray(const CCharArray<Size> &i_szString) {
             this->operator=(i_szString);
         }
 
+        /**
+        * @brief Copy constructor
+        * @param i_szString The char array to copy
+        *
+        * Constructs a new CCharArray object.
+        */
         template<size_t TOtherSize>
         explicit CCharArray(const CCharArray<TOtherSize> &i_szString) {
             this->operator=(i_szString);
@@ -40,22 +81,43 @@ namespace Devel {
         ~CCharArray() = default;
 
     public:
+        /**
+         * @brief Set char array data from string
+         * @param i_sString The string to set
+         */
         void set(const std::string &i_sString) {
             Devel::StringUtils::ToArray(this->m_szString, i_sString);
         }
 
+        /**
+         * @brief Set char array data from char pointer
+         * @param i_szString The string to set
+         * @param i_nSize The size of the string
+         */
         void set(const char *i_szString, size_t i_nSize) {
             Devel::StringUtils::ToArray(this->m_szString, i_szString, i_nSize);
         }
 
+        /**
+        * @brief Set char array data from char pointer
+        * @param i_szString The string to set
+        */
         void set(const char *i_szString) {
             Devel::StringUtils::ToArray(this->m_szString, i_szString);
         }
 
+        /**
+        * @brief Set char array data from other CCharArray
+        * @param i_szString The CCharArray to set
+        */
         void set(const CCharArray<Size> &i_szString) {
             return this->set(i_szString.c_str(), i_szString.length());
         }
 
+        /**
+         * @brief Set char array data from other CCharArray
+         * @param i_szString The CCharArray to set
+         */
         template<size_t SizeOther>
         void set(const CCharArray<SizeOther> &i_szString) {
             return this->set(i_szString.c_str(), i_szString.length());
@@ -92,6 +154,7 @@ namespace Devel {
         }
 
     public:
+
         char &first() {
             return this->m_szString[0];
         }
@@ -194,6 +257,9 @@ namespace Devel {
         }
 
     private:
+        /**
+         * @brief The char array to store the data.
+         */
         char m_szString[Size]{};
     };
 }

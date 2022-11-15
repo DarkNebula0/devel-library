@@ -18,3 +18,5 @@
 **/external/mysql
 !**/external/mysql/.gitkeep
 **/*build*/
+**/doxygen-awesome-css/*
+**/doc_doxygen/*

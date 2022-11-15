@@ -5,12 +5,13 @@
 project(Library)
 
 cmake_minimum_required (VERSION 3.8)
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 ## Packages
 find_package(Boost 1.80.0 REQUIRED)
 find_path(RANG_INCLUDE_DIRS "rang.hpp")
 
-set(LIBRARY_HEADER "Devel.h")
+set(LIBRARY_HEADER "Devel.h" "Serializing/Json/JsonFieldName.h")
 
 set(LIBRARY_SRC
         "Core/Timer/Timer.cpp"
@@ -22,7 +23,7 @@ set(LIBRARY_SRC
         "IO/WriteStream/WriteStream.cpp"
         "IO/JsonObject/JsonObject.cpp"
         "IO/JsonDocument/JsonDocument.cpp"
-        Serializing/Json/JsonFieldName.h)
+        )
 
 add_library(Library ${LIBRARY_SRC} ${LIBRARY_HEADER})
 set_property(TARGET Library PROPERTY CXX_STANDARD 20)
@@ -32,3 +33,5 @@ target_include_directories(Library PRIVATE ${Boost_INCLUDE_DIRS})
 
 
 add_subdirectory(tests)
+add_subdirectory(docs)
+
