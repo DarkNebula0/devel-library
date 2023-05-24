@@ -40,7 +40,7 @@ jobs:
       - name: Generate Doxygen documentation
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/main' || ${{ github.ref }} == 'refs/heads/documentation' ]]; then
-            cmake -S . -B build
+            cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
             cmake --build build --target doc_doxygen
           fi
 
