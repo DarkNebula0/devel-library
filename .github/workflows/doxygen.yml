@@ -1,0 +1,31 @@
+name: Deploy Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - documentation
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Doxygen
+        uses: docker://doxygen/doxygen:latest
+
+      - name: Generate Doxygen documentation
+        run: |
+          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
+            cmake -S . -B build
+            cmake --build build --target doc_doxygen
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/doc_doxygen/html
