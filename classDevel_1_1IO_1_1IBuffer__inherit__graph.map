@@ -1,0 +1,4 @@
+<map id="Devel::IO::IBuffer" name="Devel::IO::IBuffer">
+<area shape="rect" id="node1" title="An interface for working with byte buffers." alt="" coords="37,5,170,32"/>
+<area shape="rect" id="node2" href="$classDevel_1_1IO_1_1CDynamicBuffer.html" title="A dynamic implementation of the IBuffer interface." alt="" coords="5,80,201,107"/>
+</map>

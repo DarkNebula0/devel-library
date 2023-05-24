@@ -1,0 +1,31 @@
+<map id="/home/runner/work/devel&#45;library/devel&#45;library/Core/Typedef.h" name="/home/runner/work/devel&#45;library/devel&#45;library/Core/Typedef.h">
+<area shape="rect" id="node1" title="This file contains a series of type definitions for the codebase." alt="" coords="733,5,919,61"/>
+<area shape="rect" id="node2" href="$Timer_8h_source.html" title=" " alt="" coords="5,325,191,381"/>
+<area shape="rect" id="node3" href="$Devel_8h_source.html" title=" " alt="" coords="1272,911,1457,967"/>
+<area shape="rect" id="node4" href="$Buffer_8h_source.html" title=" " alt="" coords="1859,109,2044,165"/>
+<area shape="rect" id="node15" href="$SerializableArithmetic_8h_source.html" title=" " alt="" coords="1189,436,1375,507"/>
+<area shape="rect" id="node25" href="$JsonObject_8h_source.html" title=" " alt="" coords="540,325,739,381"/>
+<area shape="rect" id="node27" href="$Logger_8h.html" title="Contains logging functions and macros." alt="" coords="2353,109,2539,165"/>
+<area shape="rect" id="node28" href="$SafeQueue_8h_source.html" title=" " alt="" coords="2534,681,2787,737"/>
+<area shape="rect" id="node5" href="$DynamicBuffer_8h_source.html" title=" " alt="" coords="2273,792,2459,863"/>
+<area shape="rect" id="node6" href="$JsonDocument_8h_source.html" title=" " alt="" coords="527,443,775,499"/>
+<area shape="rect" id="node11" href="$ReadStream_8h_source.html" title=" " alt="" coords="1717,213,1937,269"/>
+<area shape="rect" id="node24" href="$WriteStream_8h_source.html" title=" " alt="" coords="1962,213,2186,269"/>
+<area shape="rect" id="node7" href="$JsonSerializer_8h_source.html" title=" " alt="" coords="469,562,697,618"/>
+<area shape="rect" id="node8" href="$JsonSerializableArray_8h_source.html" title=" " alt="" coords="564,673,749,744"/>
+<area shape="rect" id="node9" href="$Serializing_8h_source.html" title=" " alt="" coords="1272,799,1457,855"/>
+<area shape="rect" id="node10" href="$JsonSerializableStruct_8h_source.html" title=" " alt="" coords="773,673,959,744"/>
+<area shape="rect" id="node12" href="$SerializableData_8h_source.html" title=" " alt="" coords="1813,317,2021,388"/>
+<area shape="rect" id="node13" href="$SerializerStream_8h_source.html" title=" " alt="" coords="1352,562,1604,618"/>
+<area shape="rect" id="node17" href="$SerializableBool_8h_source.html" title=" " alt="" coords="1759,436,1944,507"/>
+<area shape="rect" id="node19" href="$SerializableCharArray_8h_source.html" title=" " alt="" coords="2041,673,2227,744"/>
+<area shape="rect" id="node20" href="$SerializableString_8h_source.html" title=" " alt="" coords="1889,555,2075,625"/>
+<area shape="rect" id="node21" href="$SerializableWString_8h_source.html" title=" " alt="" coords="1780,673,1965,744"/>
+<area shape="rect" id="node22" href="$JsonSerializableType_8h_source.html" title=" " alt="" coords="901,436,1133,507"/>
+<area shape="rect" id="node14" href="$SerializableVector_8h_source.html" title=" " alt="" coords="1403,673,1588,744"/>
+<area shape="rect" id="node16" href="$JsonSerializableNumber_8h_source.html" title=" " alt="" coords="1085,555,1277,625"/>
+<area shape="rect" id="node18" href="$JsonSerializableBool_8h_source.html" title=" " alt="" coords="1628,555,1813,625"/>
+<area shape="rect" id="node23" href="$JsonSerializableString_8h_source.html" title=" " alt="" coords="824,555,1009,625"/>
+<area shape="rect" id="node26" href="$JsonArray_8h_source.html" title=" " alt="" coords="317,443,503,499"/>
+<area shape="rect" id="node29" href="$ThreadPool_8h_source.html" title=" " alt="" coords="2585,799,2843,855"/>
+</map>
