@@ -120,7 +120,7 @@ namespace Devel::IO {
 
         /// @brief Returns the type of the JSON object.
         /// @return The type of the JSON object.
-        inline EJsonType ype() const { return this->m_eType; }
+        inline EJsonType type() const { return this->m_eType; }
 
         /// @brief Gets the value associated with the specified name.
         /// @param i_stName The name of the value to get.
