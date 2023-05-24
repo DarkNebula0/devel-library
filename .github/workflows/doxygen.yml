@@ -27,6 +27,8 @@ jobs:
           git submodule init
           git submodule update --init --recursive
           ls
+          cat .gitmodules
+          ls docs
           ls $PWD/docs/doxygen-awesome-css
 
       - name: Restore Vcpkg cache
