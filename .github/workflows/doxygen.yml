@@ -22,12 +22,16 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install doxygen graphviz
 
+      - name: Update submodules
+        run: |
+          git submodule init
+          git submodule update --recursive --remote
 
       - name: Restore Vcpkg cache
         uses: actions/cache@v2
         with:
           path: vcpkg
-          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg/vcpkg.json') }}
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
           restore-keys: |
             vcpkg-${{ runner.os }}-
 
