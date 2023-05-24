@@ -11,6 +11,7 @@ EXCLUDE_PATTERNS      += */published/*
 EXCLUDE_PATTERNS      += */cmake-build*/*
 EXCLUDE_PATTERNS      += */out/*
 EXCLUDE_PATTERNS      += */tests/*
+EXCLUDE_PATTERNS      += */vcpkg/*
 GENERATE_TREEVIEW      = YES # required!
 DISABLE_INDEX          = NO
 FULL_SIDEBAR           = NO
