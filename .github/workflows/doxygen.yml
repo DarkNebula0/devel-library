@@ -24,7 +24,6 @@ jobs:
 
       - name: Update submodules
         run: |
-          ls docs/doxygen-awesome-css
           git submodule init
           git submodule update --init --recursive
           ls docs/doxygen-awesome-css
