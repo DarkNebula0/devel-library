@@ -14,8 +14,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Doxygen
-        uses: docker://doxygen/doxygen:latest
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen graphviz -y
+        shell: bash
 
       - name: Generate Doxygen documentation
         run: |
