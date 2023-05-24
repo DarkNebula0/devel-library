@@ -18,6 +18,26 @@ jobs:
         run: sudo apt-get install doxygen graphviz -y
         shell: bash
 
+      - name: Install Vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git
+          cd vcpkg
+          ./bootstrap-vcpkg.sh
+        working-directory: ${{ github.workspace }}
+
+      - name: Install Vcpkg packages
+        run: |
+          cd vcpkg
+          ./vcpkg install --feature-flags=manifests
+        working-directory: ${{ github.workspace }}
+
+      - name: Cache Vcpkg directory
+        uses: actions/cache@v2
+        with:
+          path: vcpkg
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg/vcpkg.json') }}
+
+
       - name: Generate Doxygen documentation
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/main' || ${{ github.ref }} == 'refs/heads/documentation' ]]; then
