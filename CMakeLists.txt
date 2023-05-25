@@ -31,6 +31,13 @@ target_include_directories(Library PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${LIBRARY_
 target_link_libraries(Library PRIVATE ${BOOST_LIBRARIES})
 target_include_directories(Library PRIVATE ${Boost_INCLUDE_DIRS})
 
+# Code coverage
+option(CODE_COVERAGE "Enable coverage reporting" OFF)
+if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(Library PUBLIC -O0 -g --coverage)
+    target_link_libraries(Library PUBLIC --coverage)
+endif ()
+
 
 add_subdirectory(tests)
 add_subdirectory(docs)
