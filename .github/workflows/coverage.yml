@@ -37,9 +37,9 @@ jobs:
 
       - name: Configure CMake
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
           cmake --build build --target lib-tests
-          
+
 
       - name: Run Tests and Generate Coverage Data
         run: |

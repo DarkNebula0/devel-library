@@ -10,8 +10,8 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 # Coverage
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
 if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-arcs -ftest-coverage")
-    link_libraries(gcov)
+    target_compile_options(lib-tests PUBLIC -O0 -g --coverage)
+    target_link_libraries(lib-tests PUBLIC --coverage)
 endif ()
 
 ## Packages
