@@ -46,7 +46,7 @@ jobs:
           cd build/tests
           ./lib-tests
           lcov --directory . --capture --rc lcov_branch_coverage=1 --output-file coverage.info
-          lcov --remove coverage.info 'tests/**/*' 'vcpkg_installed/**/*' 'build/vcpkg_installed/**/*' '/usr/*' --output-file coverage.info
+          lcov --remove coverage.info '/home/runner/work/devel-library/devel-library/tests/*' '/home/runner/work/devel-library/devel-library/vcpkg_installed/*' '/home/runner/work/devel-library/devel-library/build/*' '/usr/*' --output-file coverage.info
           lcov --list coverage.info
 
       - name: Upload coverage to Codecov
