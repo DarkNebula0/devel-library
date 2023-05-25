@@ -129,9 +129,16 @@ namespace Devel::Serializing {
         }
 
     protected:
-        /// @brief Called during deserialization to populate the object from a JSON object (non-strict mode).
-        /// @param i_oObject The JSON object containing the serialized data.
-        /// @return True if deserialization is successful, false otherwise.
+        /// @brief Serializes the data to a JSON object.
+        ///
+        /// This function serializes the data to a JSON object represented by the CJsonObject class.
+        /// If the object already contains a field with the same name as this data object, the existing value is overwritten.
+        ///
+        /// @param i_oObject The JSON object to serialize to.
+        /// @param i_bIsStrict Flag indicating whether strict serialization should be performed.
+        /// If set to true, only fields marked for serialization will be included in the output.
+        /// If set to false, all fields will be included in the output.
+        /// @return true if serialization was successful, false otherwise.
         bool serialize(IO::CJsonObject &i_oObject, const bool i_bIsStrict = false) const {
             if (checkSerializeObject(i_oObject, i_bIsStrict)) {
                 return true;
