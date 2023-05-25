@@ -7,6 +7,13 @@ project(Library)
 cmake_minimum_required(VERSION 3.8)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
+# Coverage
+option(CODE_COVERAGE "Enable coverage reporting" OFF)
+if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-arcs -ftest-coverage")
+    link_libraries(gcov)
+endif ()
+
 ## Packages
 find_package(Boost 1.80.0 REQUIRED)
 find_path(RANG_INCLUDE_DIRS "rang.hpp")

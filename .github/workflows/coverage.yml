@@ -5,8 +5,57 @@ on: [ push ]
 jobs:
   coverage:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@master
-      - uses: codecov/codecov-action@v3
+
+      - name: Install dependencies
+        run: sudo apt-get install lcov
+
+      - name: Restore Vcpkg cache
+        uses: actions/cache@v2
+        with:
+          path: vcpkg
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+
+      - name: Install Vcpkg
+        run: |
+          if [ ! -d "vcpkg" ]; then
+            git clone https://github.com/microsoft/vcpkg.git
+            cd vcpkg
+            ./bootstrap-vcpkg.sh
+          fi
+        working-directory: ${{ github.workspace }}
+
+      - name: Install Vcpkg packages
+        run: |
+          cd vcpkg
+          ./vcpkg install --feature-flags=manifests
+        working-directory: ${{ github.workspace }}
+
+      - name: Configure CMake
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+      - name: Build
+        run: |
+          cd build
+          make
+
+      - name: Run Tests and Generate Coverage Data
+        run: |
+          cd build/tests
+          ./lib-tests
+          lcov --capture --directory . --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' --output-file coverage.info
+          lcov --list coverage.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./build/tests/coverage.info
