@@ -10,3 +10,4 @@
 #include "Serializing_Test.h"
 #include "Json_Test.h"
 #include "StringUtils_Test.h"
+#include "VectorUtils_Test.h"
