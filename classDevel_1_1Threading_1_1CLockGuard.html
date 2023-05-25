@@ -108,13 +108,66 @@ $(document).ready(function(){initNavTree('classDevel_1_1Threading_1_1CLockGuard.
 <div class="title">Devel::Threading::CLockGuard Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A lock guard class for a recursive mutex.  
+ <a href="classDevel_1_1Threading_1_1CLockGuard.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="LockGuard_8h_source.html">LockGuard.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adc8ed44721455b5ae97566b5c1e6c6fd"><td class="memItemLeft" align="right" valign="top"><a id="adc8ed44721455b5ae97566b5c1e6c6fd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CLockGuard</b> (const <a class="el" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;i_oMutex)</td></tr>
+<tr class="memitem:adc8ed44721455b5ae97566b5c1e6c6fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html#adc8ed44721455b5ae97566b5c1e6c6fd">CLockGuard</a> (const <a class="el" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;i_oMutex)</td></tr>
+<tr class="memdesc:adc8ed44721455b5ae97566b5c1e6c6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html" title="A lock guard class for a recursive mutex.">CLockGuard</a> and acquires the lock on the specified mutex.  <a href="classDevel_1_1Threading_1_1CLockGuard.html#adc8ed44721455b5ae97566b5c1e6c6fd">More...</a><br /></td></tr>
 <tr class="separator:adc8ed44721455b5ae97566b5c1e6c6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc804ca9e835675377f6c31ed9b6631"><td class="memItemLeft" align="right" valign="top"><a id="aadc804ca9e835675377f6c31ed9b6631"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html#aadc804ca9e835675377f6c31ed9b6631">~CLockGuard</a> ()</td></tr>
+<tr class="memdesc:aadc804ca9e835675377f6c31ed9b6631"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html" title="A lock guard class for a recursive mutex.">CLockGuard</a> and releases the lock on the mutex. <br /></td></tr>
+<tr class="separator:aadc804ca9e835675377f6c31ed9b6631"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A lock guard class for a recursive mutex. </p>
+<p>This class provides a convenient way to acquire and release a lock on a recursive mutex.</p>
+<p>Example usage: </p><div class="fragment"><div class="line">CMutex mutex;</div>
+<div class="line">{</div>
+<div class="line">    RecursiveLockGuard(mutex); <span class="comment">// Acquires the lock on the mutex</span></div>
+<div class="line">    <span class="comment">// Critical section</span></div>
+<div class="line">    <span class="comment">// The lock will be automatically released when the lock guard goes out of scope</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="adc8ed44721455b5ae97566b5c1e6c6fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc8ed44721455b5ae97566b5c1e6c6fd">&#9670;&nbsp;</a></span>CLockGuard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Devel::Threading::CLockGuard::CLockGuard </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;&#160;</td>
+          <td class="paramname"><em>i_oMutex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html" title="A lock guard class for a recursive mutex.">CLockGuard</a> and acquires the lock on the specified mutex. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i_oMutex</td><td>The recursive mutex to lock. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/runner/work/devel-library/devel-library/Threading/LockGuard/<a class="el" href="LockGuard_8h_source.html">LockGuard.h</a></li>
 </ul>
@@ -123,7 +176,7 @@ Public Member Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceDevel.html">Devel</a></li><li class="navelem"><b>Threading</b></li><li class="navelem"><a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html">CLockGuard</a></li>
+    <li class="navelem"><a class="el" href="namespaceDevel.html">Devel</a></li><li class="navelem"><a class="el" href="namespaceDevel_1_1Threading.html">Threading</a></li><li class="navelem"><a class="el" href="classDevel_1_1Threading_1_1CLockGuard.html">CLockGuard</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

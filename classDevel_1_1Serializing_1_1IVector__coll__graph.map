@@ -1,6 +1,6 @@
 <map id="Devel::Serializing::IVector&lt; Type, IsHidden, TSize, T &gt;" name="Devel::Serializing::IVector&lt; Type, IsHidden, TSize, T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,288,195,344"/>
+<area shape="rect" id="node1" title="A class representing a vector for serialization." alt="" coords="5,288,195,344"/>
 <area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="25,184,175,240"/>
-<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="32,95,168,136"/>
-<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="32,5,168,47"/>
+<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="32,95,168,136"/>
+<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="32,5,168,47"/>
 </map>

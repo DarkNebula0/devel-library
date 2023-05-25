@@ -1,6 +1,6 @@
 <map id="Devel::Serializing::IString&lt; IsHidden, T &gt;" name="Devel::Serializing::IString&lt; IsHidden, T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,288,180,329"/>
+<area shape="rect" id="node1" title="A class representing a string value for serialization." alt="" coords="5,288,180,329"/>
 <area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="18,184,167,240"/>
-<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="25,95,161,136"/>
-<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="25,5,161,47"/>
+<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="25,95,161,136"/>
+<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="25,5,161,47"/>
 </map>

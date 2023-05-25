@@ -1,8 +1,8 @@
 <map id="Devel::Serializing::IBool&lt; IsHidden, T &gt;" name="Devel::Serializing::IBool&lt; IsHidden, T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="27,273,194,315"/>
+<area shape="rect" id="node1" title="A class representing a boolean value for serialization." alt="" coords="27,273,194,315"/>
 <area shape="rect" id="node5" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="5,363,216,419"/>
 <area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="29,184,192,225"/>
-<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="43,95,179,136"/>
-<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="43,5,179,47"/>
-<area shape="rect" id="node6" href="$classDevel_1_1Serializing_1_1IJsonBool.html" title=" " alt="" coords="43,467,179,508"/>
+<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="43,95,179,136"/>
+<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="43,5,179,47"/>
+<area shape="rect" id="node6" href="$classDevel_1_1Serializing_1_1IJsonBool.html" title="Represents a JSON boolean data type for serialization and deserialization." alt="" coords="43,467,179,508"/>
 </map>

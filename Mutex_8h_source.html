@@ -109,32 +109,38 @@ $(document).ready(function(){initNavTree('Mutex_8h_source.html',''); initResizab
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Devel::Threading {</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> lock()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">return</span> this-&gt;m_oMutex.lock();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> unlock()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">return</span> this-&gt;m_oMutex.unlock();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">bool</span> tryLock()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">return</span> this-&gt;m_oMutex.try_lock();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">mutable</span> std::recursive_mutex m_oMutex;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html">Devel::Threading::CMutex</a></div><div class="ttdef"><b>Definition:</b> Mutex.h:6</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceDevel_1_1Threading.html">Devel::Threading</a> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html">   47</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html#a7b6e377d6ca946d70821dd2ee69fbf69">   50</a></span>&#160;        <a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a7b6e377d6ca946d70821dd2ee69fbf69">CMutex</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html#acfdd8c443cfcedb64e303c6d22a1e5a5">   53</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html#acfdd8c443cfcedb64e303c6d22a1e5a5">~CMutex</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">   58</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">lock</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> this-&gt;m_oMutex.lock();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">   63</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">unlock</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> this-&gt;m_oMutex.unlock();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CMutex.html#a9dfdbfb2f989ff5cc30bfec17aad4681">   72</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a9dfdbfb2f989ff5cc30bfec17aad4681">tryLock</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">return</span> this-&gt;m_oMutex.try_lock();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">mutable</span> std::recursive_mutex m_oMutex;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    };</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html">Devel::Threading::CMutex</a></div><div class="ttdoc">A class for handling recursive mutexes.</div><div class="ttdef"><b>Definition:</b> Mutex.h:47</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a78d0a7285419ad25165ee0d7658868df"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">Devel::Threading::CMutex::lock</a></div><div class="ttdeci">void lock() const</div><div class="ttdoc">Locks the mutex. If the mutex is currently locked by another thread, this call will block the calling...</div><div class="ttdef"><b>Definition:</b> Mutex.h:58</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a7b6e377d6ca946d70821dd2ee69fbf69"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a7b6e377d6ca946d70821dd2ee69fbf69">Devel::Threading::CMutex::CMutex</a></div><div class="ttdeci">CMutex()=default</div><div class="ttdoc">Default constructor for CMutex.</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a9b697f302d6bac78d0a826cb11c0444b"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">Devel::Threading::CMutex::unlock</a></div><div class="ttdeci">void unlock() const</div><div class="ttdoc">Unlocks the mutex.</div><div class="ttdef"><b>Definition:</b> Mutex.h:63</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a9dfdbfb2f989ff5cc30bfec17aad4681"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a9dfdbfb2f989ff5cc30bfec17aad4681">Devel::Threading::CMutex::tryLock</a></div><div class="ttdeci">bool tryLock() const</div><div class="ttdoc">Attempts to lock the mutex. If the mutex is not available for locking, this function returns immediat...</div><div class="ttdef"><b>Definition:</b> Mutex.h:72</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_acfdd8c443cfcedb64e303c6d22a1e5a5"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#acfdd8c443cfcedb64e303c6d22a1e5a5">Devel::Threading::CMutex::~CMutex</a></div><div class="ttdeci">virtual ~CMutex()=default</div><div class="ttdoc">Default virtual destructor for CMutex.</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Threading_html"><div class="ttname"><a href="namespaceDevel_1_1Threading.html">Devel::Threading</a></div><div class="ttdoc">The namespace encapsulating threading related classes and functions in the Devel framework.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

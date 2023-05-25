@@ -10,10 +10,12 @@ var hierarchy =
     [ "Devel::Threading::CMutexVector< CJsonObject >", "classDevel_1_1Threading_1_1CMutexVector.html", [
       [ "Devel::IO::CJsonArray", "classDevel_1_1IO_1_1CJsonArray.html", null ]
     ] ],
+    [ "CMutexVector< T >", "classDevel_1_1Threading_1_1CMutexVector_3_01T_01_4.html", null ],
     [ "Devel::CObjectData", "classDevel_1_1CObjectData.html", null ],
     [ "Devel::IO::CPath", "classDevel_1_1IO_1_1CPath.html", null ],
     [ "Devel::IO::CReadStream", "classDevel_1_1IO_1_1CReadStream.html", null ],
     [ "Devel::Threading::CSafeQueue< T >", "classDevel_1_1Threading_1_1CSafeQueue.html", null ],
+    [ "CSafeQueue< T >", "classDevel_1_1Threading_1_1CSafeQueue_3_01T_01_4.html", null ],
     [ "Devel::Threading::CSafeQueue< ThreadPoolTaskFn >", "classDevel_1_1Threading_1_1CSafeQueue.html", null ],
     [ "Devel::CSingleton< T >", "classDevel_1_1CSingleton.html", null ],
     [ "Devel::Threading::CThreadPool", "classDevel_1_1Threading_1_1CThreadPool.html", null ],
@@ -69,6 +71,7 @@ var hierarchy =
         ] ]
       ] ]
     ] ],
+    [ "ISerializable", "classDevel_1_1Serializing_1_1ISerializable.html", null ],
     [ "Devel::Serializing::IStruct", "classDevel_1_1Serializing_1_1IStruct.html", null ],
     [ "Devel::Serializing::SCompareData", "structDevel_1_1Serializing_1_1SCompareData.html", null ],
     [ "std::string", null, [

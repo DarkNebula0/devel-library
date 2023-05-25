@@ -109,87 +109,93 @@ $(document).ready(function(){initNavTree('SerializableVector_8h_source.html','')
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Serializing/Core/SerializerStream.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Devel::Serializing {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma pack(push, 1)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type = <span class="keywordtype">int</span>, <span class="keywordtype">bool</span> IsH<span class="keywordtype">id</span>den = false, <span class="keyword">typename</span> TSize = u<span class="keywordtype">int</span>, <span class="keyword">typename</span> T = std::vector&lt;Type&gt;&gt;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IVector.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Serializing_1_1IVector.html">IVector</a> : <span class="keyword">public</span> <a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt;T, IsHidden&gt; {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">void</span> _serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">for</span> (TCopy &amp;tType: this-&gt;m_tValue) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                tType.doSerialize(i_oStream);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> _serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">for</span> (TCopy &amp;tType: this-&gt;m_tValue) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                Serializing::SerializeStream(tType, i_oStream);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> _serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> TCopy &amp;tType: this-&gt;m_tValue) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                i_oStream.<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">push</a>&lt;TCopy&gt;(tType);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">bool</span> serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            i_oStream.<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">push</a>&lt;TSize&gt;(<span class="keyword">static_cast&lt;</span>TSize<span class="keyword">&gt;</span>(this-&gt;m_tValue.size()));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            this-&gt;_serialize(i_oStream);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> _deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nSize) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">for</span> (; i_nSize &gt; 0; i_nSize--) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                this-&gt;m_tValue.emplace_back();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                (--this-&gt;m_tValue.end())-&gt;doDeserialize(i_oStream);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> _deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nSize) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">for</span> (; i_nSize &gt; 0; i_nSize--) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                this-&gt;m_tValue.emplace_back();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                Serializing::DeserializeStream(*(--this-&gt;m_tValue.end()), i_oStream);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>&gt;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> _deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nSize) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">for</span> (; i_nSize &gt; 0; i_nSize--) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                this-&gt;m_tValue.push_back(i_oStream.get&lt;Type&gt;());</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">bool</span> deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">const</span> TSize nSize = i_oStream.<a class="code" href="classDevel_1_1IO_1_1CReadStream.html#af3712ce85b7ba9c8c21663c85bfb1453">get</a>&lt;TSize&gt;();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            this-&gt;m_tValue.reserve(nSize &gt; 30 ? 30 : nSize);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            this-&gt;_deserialize(i_oStream, nSize);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        CreateSerializeOperators(T, IsHidden);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    };</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">}</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma pack(push, 1)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type = <span class="keywordtype">int</span>, <span class="keywordtype">bool</span> IsH<span class="keywordtype">id</span>den = false, <span class="keyword">typename</span> TSize = u<span class="keywordtype">int</span>, <span class="keyword">typename</span> T = std::vector&lt;Type&gt;&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IVector.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Serializing_1_1IVector.html">IVector</a> : <span class="keyword">public</span> <a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt;T, IsHidden&gt; {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> _serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">for</span> (TCopy &amp;tType: this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                tType.<a class="code" href="classDevel_1_1Serializing_1_1IData.html#af50014d7810a65a76b1db9483202ca9d">doSerialize</a>(i_oStream);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> _serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">for</span> (TCopy &amp;tType: this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="code" href="namespaceDevel_1_1Serializing.html#a112e1d1fc2f74e1894ddc845bf5e9bf2">Serializing::SerializeStream</a>(tType, i_oStream);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>&gt;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">void</span> _serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> TCopy &amp;tType: this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                i_oStream.<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">push</a>&lt;TCopy&gt;(tType);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">bool</span> serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            i_oStream.<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">push</a>&lt;TSize&gt;(<span class="keyword">static_cast&lt;</span>TSize<span class="keyword">&gt;</span>(this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.size()));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            this-&gt;_serialize(i_oStream);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">void</span> _deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nSize) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">for</span> (; i_nSize &gt; 0; i_nSize--) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.emplace_back();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                (--this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.end())-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IData.html#ac1f6faab41bda7d98151493d991e1704">doDeserialize</a>(i_oStream);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type, <span class="keyword">typename</span> std::enable_if_t&lt;std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">void</span> _deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nSize) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">for</span> (; i_nSize &gt; 0; i_nSize--) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.emplace_back();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="namespaceDevel_1_1Serializing.html#a85f967a2f68412135beedcaac9034adb">Serializing::DeserializeStream</a>(*(--this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.end()), i_oStream);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TCopy = Type,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IField, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;!std::is_base_of_v&lt;Serializing::IStruct, TCopy&gt;&gt; * = <span class="keyword">nullptr</span>&gt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">void</span> _deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nSize) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">for</span> (; i_nSize &gt; 0; i_nSize--) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.push_back(i_oStream.get&lt;Type&gt;());</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">bool</span> deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keyword">const</span> TSize nSize = i_oStream.<a class="code" href="classDevel_1_1IO_1_1CReadStream.html#af3712ce85b7ba9c8c21663c85bfb1453">get</a>&lt;TSize&gt;();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.reserve(nSize &gt; 30 ? 30 : nSize);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            this-&gt;_deserialize(i_oStream, nSize);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        CreateSerializeOperators(T, IsHidden);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    };</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">}</span></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html">Devel::IO::CReadStream</a></div><div class="ttdoc">A class for reading data from a buffer. This class provides functionality to read data from a buffer....</div><div class="ttdef"><b>Definition:</b> ReadStream.h:37</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html_af3712ce85b7ba9c8c21663c85bfb1453"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html#af3712ce85b7ba9c8c21663c85bfb1453">Devel::IO::CReadStream::get</a></div><div class="ttdeci">T get(const size_t i_nPosition, const bool i_fSetPosition)</div><div class="ttdoc">Reads a value of type T from the buffer.</div><div class="ttdef"><b>Definition:</b> ReadStream.h:344</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CWriteStream_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CWriteStream.html">Devel::IO::CWriteStream</a></div><div class="ttdoc">A class for writing data to a buffer. This class provides functionality to write data to a buffer....</div><div class="ttdef"><b>Definition:</b> WriteStream.h:42</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CWriteStream_html_a1b502ec41d8b3e07628e4928ae1f564d"><div class="ttname"><a href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">Devel::IO::CWriteStream::push</a></div><div class="ttdeci">void push(const void *i_pBuffer, size_t i_nSize)</div><div class="ttdoc">Pushes the specified data to the buffer.</div><div class="ttdef"><b>Definition:</b> WriteStream.cpp:30</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData</a></div><div class="ttdef"><b>Definition:</b> SerializableData.h:53</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1IVector_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IVector.html">Devel::Serializing::IVector</a></div><div class="ttdef"><b>Definition:</b> SerializableVector.h:9</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData</a></div><div class="ttdoc">Template class representing a data field.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:86</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html_ac1f6faab41bda7d98151493d991e1704"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html#ac1f6faab41bda7d98151493d991e1704">Devel::Serializing::IData&lt; std::vector&lt; int &gt;, false &gt;::doDeserialize</a></div><div class="ttdeci">bool doDeserialize(IO::CReadStream &amp;i_oStream)</div><div class="ttdoc">Deserializes the data from a read stream.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:117</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html_af50014d7810a65a76b1db9483202ca9d"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html#af50014d7810a65a76b1db9483202ca9d">Devel::Serializing::IData::doSerialize</a></div><div class="ttdeci">bool doSerialize(IO::CWriteStream &amp;i_oStream) const</div><div class="ttdoc">Serializes the data to a write stream.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:97</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IValue_html_a0b56890dc5ecb9da4487c906c8a4b81c"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">Devel::Serializing::IValue::m_tValue</a></div><div class="ttdeci">T m_tValue</div><div class="ttdoc">The value.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:78</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IVector_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IVector.html">Devel::Serializing::IVector</a></div><div class="ttdoc">A class representing a vector for serialization.</div><div class="ttdef"><b>Definition:</b> SerializableVector.h:20</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a></div><div class="ttdoc">The namespace encapsulating serializing related functionality in the Devel framework.</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html_a112e1d1fc2f74e1894ddc845bf5e9bf2"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html#a112e1d1fc2f74e1894ddc845bf5e9bf2">Devel::Serializing::SerializeStream</a></div><div class="ttdeci">bool SerializeStream(const T &amp;i_oStruct, IO::CWriteStream &amp;i_oStream)</div><div class="ttdoc">Serializes a struct to a write stream.</div><div class="ttdef"><b>Definition:</b> SerializerStream.h:20</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html_a85f967a2f68412135beedcaac9034adb"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html#a85f967a2f68412135beedcaac9034adb">Devel::Serializing::DeserializeStream</a></div><div class="ttdeci">bool DeserializeStream(T &amp;i_oStruct, IO::CReadStream &amp;i_oStream, size_t i_nStructSize=sizeof(T))</div><div class="ttdoc">Deserializes a struct from a read stream.</div><div class="ttdef"><b>Definition:</b> SerializerStream.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

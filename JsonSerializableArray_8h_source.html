@@ -106,128 +106,135 @@ $(document).ready(function(){initNavTree('JsonSerializableArray_8h_source.html',
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;Serializing/Json/JsonSerializableType.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Serializing/Json/JsonSerializer.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Devel::Serializing {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma pack(push, 1)</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TStruct&gt;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IJsonArray.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray</a> : <span class="keyword">public</span> <a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html">IJsonType</a>&lt;TStruct, IData&lt;std::vector&lt;TStruct&gt;&gt;&gt; {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray</a>(<span class="keyword">const</span> <a class="code" href="classDevel_1_1Serializing_1_1CJsonFieldName.html">CJsonFieldName</a> i_oFieldName) : <a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html">IJsonType&lt;TStruct, IData&lt;std::vector&lt;TStruct&gt;</a>&gt;&gt;(</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                i_oFieldName) {};</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">bool</span> onDeserialize(<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;i_oObject, <span class="keyword">const</span> <span class="keywordtype">bool</span> i_bIsStrict) <span class="keyword">final</span> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> *pObject = this-&gt;getObject(i_oObject, i_bIsStrict);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">if</span> (!pObject) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pObject-&gt;<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html#a24ed09e1ee91344483efa88134ad1c80">type</a>() != <a class="code" href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06a7d4041c78f28d189e7a1562ffc2039d4">IO::EJsonType::JTArray</a>) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keywordflow">throw</span> DifferentTypesException;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            this-&gt;setNull(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="classDevel_1_1IO_1_1CJsonArray.html">IO::CJsonArray</a> oArray = pObject-&gt;<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html#ad337fa2f5a79bfbee34a22f314356d2e">toArray</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;oItem: oArray) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                TStruct grStruct;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordflow">if</span> (oItem.type() == <a class="code" href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06ab20eda835e43411dabadf338e094d110">IO::EJsonType::JTObject</a> || oItem.type() == <a class="code" href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06a7d4041c78f28d189e7a1562ffc2039d4">IO::EJsonType::JTArray</a>) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keywordflow">if</span> (!DeserializeObject(grStruct, <span class="keyword">const_cast&lt;</span><a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;<span class="keyword">&gt;</span>(oItem))) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                   <span class="keywordflow">if</span> constexpr (is_data_class&lt;TStruct&gt;::value) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                       <span class="keywordflow">if</span> (!grStruct.doDeserialize(oItem.c_str())) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                           <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                       }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (std::is_same_v&lt;IO::CJsonObject, TStruct&gt;) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        grStruct= oItem;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                   }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                   <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                       <span class="keywordflow">throw</span> InvalidTypeException;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Serializing/Json/JsonSerializableType.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Serializing/Json/JsonSerializer.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma pack(push, 1)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TStruct&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IJsonArray.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray</a> : <span class="keyword">public</span> <a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html">IJsonType</a>&lt;TStruct, IData&lt;std::vector&lt;TStruct&gt;&gt;&gt; {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IJsonArray.html#ab320ead7b86e2ce2521238f66df53d74">   20</a></span>&#160;        <a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html#ab320ead7b86e2ce2521238f66df53d74">IJsonArray</a>(<span class="keyword">const</span> <a class="code" href="classDevel_1_1Serializing_1_1CJsonFieldName.html">CJsonFieldName</a> i_oFieldName) : <a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html">IJsonType</a>&lt;TStruct, <a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt;std::vector&lt;TStruct&gt;&gt;&gt;(</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                i_oFieldName) {};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">bool</span> onDeserialize(<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;i_oObject, <span class="keyword">const</span> <span class="keywordtype">bool</span> i_bIsStrict) <span class="keyword">final</span> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> *pObject = this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#a2ca5779137134e17b356f5ade4e599d3">getObject</a>(i_oObject, i_bIsStrict);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span> (!pObject) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pObject-&gt;<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html#a24ed09e1ee91344483efa88134ad1c80">type</a>() != <a class="code" href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06a7d4041c78f28d189e7a1562ffc2039d4">IO::EJsonType::JTArray</a>) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">throw</span> DifferentTypesException;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#aa947c65eaba4257129900c58df9e7348">setNull</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            IO::CJsonArray oArray = pObject-&gt;<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html#ad337fa2f5a79bfbee34a22f314356d2e">toArray</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> IO::CJsonObject &amp;oItem: oArray) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                TStruct grStruct;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">if</span> (oItem.type() == <a class="code" href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06ab20eda835e43411dabadf338e094d110">IO::EJsonType::JTObject</a> || oItem.type() == <a class="code" href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06a7d4041c78f28d189e7a1562ffc2039d4">IO::EJsonType::JTArray</a>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keywordflow">if</span> (!<a class="code" href="namespaceDevel_1_1Serializing.html#ab793a6c1821d00601e1e595c90e4f658">DeserializeObject</a>(grStruct, <span class="keyword">const_cast&lt;</span>IO::CJsonObject &amp;<span class="keyword">&gt;</span>(oItem))) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                this-&gt;m_tValue.push_back(std::move(grStruct));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">bool</span> onSerialize(<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;i_oObject, <span class="keyword">const</span> <span class="keywordtype">bool</span> i_bIsStrict = <span class="keyword">false</span>) <span class="keyword">const</span> <span class="keyword">final</span> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">if</span> (this-&gt;checkSerializeObject(i_oObject, i_bIsStrict)) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="classDevel_1_1IO_1_1CJsonArray.html">IO::CJsonArray</a> oArray;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> TStruct &amp;grItem: this-&gt;m_tValue) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> oObject;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordflow">if</span> constexpr (std::is_base_of_v&lt;IStruct, TStruct&gt;) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <span class="keywordflow">if</span> (!SerializeObject(grItem, oObject)) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (is_json_type_class&lt;TStruct&gt;::value) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="keywordflow">return</span> grItem.onSerialize(oObject);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (is_data_class&lt;TStruct&gt;::value) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    oObject = grItem.value();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordflow">throw</span> InvalidTypeException;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                oArray.push_back(oObject);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (this-&gt;name().empty()) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                i_oObject = oArray;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                i_oObject.<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html#afa1373bf52b293b1f004b22991c383ea">get</a>(this-&gt;name()) = oArray;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="keywordflow">if</span> constexpr (is_data_class&lt;TStruct&gt;::value) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="keywordflow">if</span> (!grStruct.doDeserialize(oItem.c_str())) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (std::is_same_v&lt;IO::CJsonObject, TStruct&gt;) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        grStruct = oItem;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <span class="keywordflow">throw</span> InvalidTypeException;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>.push_back(std::move(grStruct));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">bool</span> onSerialize(IO::CJsonObject &amp;i_oObject, <span class="keyword">const</span> <span class="keywordtype">bool</span> i_bIsStrict = <span class="keyword">false</span>) const final {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#ac6f061108168397ce8f7dca94a32e7fb">checkSerializeObject</a>(i_oObject, i_bIsStrict)) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            IO::CJsonArray oArray;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> TStruct &amp;grItem: this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                IO::CJsonObject oObject;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">if</span> constexpr (std::is_base_of_v&lt;IStruct, TStruct&gt;) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordflow">if</span> (!<a class="code" href="namespaceDevel_1_1Serializing.html#a9cc14fd6be0f8403203fe1ab2e16db43">SerializeObject</a>(grItem, oObject)) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (is_json_type_class&lt;TStruct&gt;::value) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="keywordflow">return</span> grItem.onSerialize(oObject);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (is_data_class&lt;TStruct&gt;::value) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    oObject = grItem.value();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="keywordflow">throw</span> InvalidTypeException;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">bool</span> onDeserialize(<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;i_oObject) <span class="keyword">final</span> {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> this-&gt;onDeserialize(i_oObject, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">bool</span> onSerialize(<a class="code" href="classDevel_1_1IO_1_1CJsonObject.html">IO::CJsonObject</a> &amp;i_oObject) <span class="keyword">const</span> <span class="keyword">final</span> {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> this-&gt;onSerialize(i_oObject, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">using</span> <a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html">IJsonType&lt;TStruct, IData&lt;std::vector&lt;TStruct&gt;</a>&gt;&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html">::IJsonType</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                oArray.push_back(oObject);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#a5d6083b97ad8a65516dd41d6ca808e64">name</a>().empty()) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                i_oObject = oArray;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                i_oObject.get(this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#a5d6083b97ad8a65516dd41d6ca808e64">name</a>()) = oArray;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">auto</span> &amp;operator=(<span class="keyword">const</span> <a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray&lt;TStruct&gt;</a> &amp;i_tValue) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            this-&gt;setNull(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            this-&gt;m_tValue = i_tValue;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">auto</span> &amp;operator=(<a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray&lt;TStruct&gt;</a> &amp;&amp;i_tValue) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            this-&gt;setNull(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            this-&gt;m_tValue = i_tValue;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    };</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">}</span></div>
-<div class="ttc" id="aclassDevel_1_1IO_1_1CJsonArray_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CJsonArray.html">Devel::IO::CJsonArray</a></div><div class="ttdoc">A thread-safe array class for Json objects.</div><div class="ttdef"><b>Definition:</b> JsonArray.h:41</div></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">bool</span> onDeserialize(IO::CJsonObject &amp;i_oObject) <span class="keyword">final</span> {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span> this-&gt;onDeserialize(i_oObject, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">bool</span> onSerialize(IO::CJsonObject &amp;i_oObject) <span class="keyword">const</span> <span class="keyword">final</span> {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> this-&gt;onSerialize(i_oObject, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">using</span> IJsonType&lt;TStruct, IData&lt;std::vector&lt;TStruct&gt;&gt;&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#af1ef85c7cd87fb1e3a955bac037b87ad">::IJsonType</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IJsonArray.html#a51a3f1013f553d313b0fe18e1de01f18">  119</a></span>&#160;        <span class="keyword">auto</span> &amp;<a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html#a51a3f1013f553d313b0fe18e1de01f18">operator=</a>(<span class="keyword">const</span> <a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray&lt;TStruct&gt;</a> &amp;i_tValue) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#aa947c65eaba4257129900c58df9e7348">setNull</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            this-&gt;m_tValue = i_tValue;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IJsonArray.html#adb74bb779db326cd57d058340f993255">  128</a></span>&#160;        <span class="keyword">auto</span> &amp;<a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html#adb74bb779db326cd57d058340f993255">operator=</a>(<a class="code" href="classDevel_1_1Serializing_1_1IJsonArray.html">IJsonArray&lt;TStruct&gt;</a> &amp;&amp;i_tValue) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IJsonType.html#aa947c65eaba4257129900c58df9e7348">setNull</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            this-&gt;m_tValue = i_tValue;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    };</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">}</span></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CJsonObject_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CJsonObject.html">Devel::IO::CJsonObject</a></div><div class="ttdoc">A class that encapsulates a JSON object.</div><div class="ttdef"><b>Definition:</b> JsonObject.h:50</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CJsonObject_html_a24ed09e1ee91344483efa88134ad1c80"><div class="ttname"><a href="classDevel_1_1IO_1_1CJsonObject.html#a24ed09e1ee91344483efa88134ad1c80">Devel::IO::CJsonObject::type</a></div><div class="ttdeci">EJsonType type() const</div><div class="ttdoc">Returns the type of the JSON object.</div><div class="ttdef"><b>Definition:</b> JsonObject.h:123</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CJsonObject_html_ad337fa2f5a79bfbee34a22f314356d2e"><div class="ttname"><a href="classDevel_1_1IO_1_1CJsonObject.html#ad337fa2f5a79bfbee34a22f314356d2e">Devel::IO::CJsonObject::toArray</a></div><div class="ttdeci">CJsonArray toArray() const</div><div class="ttdoc">Converts the JSON object to a JSON array.</div><div class="ttdef"><b>Definition:</b> JsonObject.cpp:44</div></div>
-<div class="ttc" id="aclassDevel_1_1IO_1_1CJsonObject_html_afa1373bf52b293b1f004b22991c383ea"><div class="ttname"><a href="classDevel_1_1IO_1_1CJsonObject.html#afa1373bf52b293b1f004b22991c383ea">Devel::IO::CJsonObject::get</a></div><div class="ttdeci">CJsonObject &amp; get(const std::string_view i_stName)</div><div class="ttdoc">Gets the value associated with the specified name.</div><div class="ttdef"><b>Definition:</b> JsonObject.h:128</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1CJsonFieldName_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1CJsonFieldName.html">Devel::Serializing::CJsonFieldName</a></div><div class="ttdef"><b>Definition:</b> JsonFieldName.h:8</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonArray_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonArray.html">Devel::Serializing::IJsonArray</a></div><div class="ttdef"><b>Definition:</b> JsonSerializableArray.h:9</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html">Devel::Serializing::IJsonType</a></div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:20</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1CJsonFieldName_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1CJsonFieldName.html">Devel::Serializing::CJsonFieldName</a></div><div class="ttdoc">A class representing a JSON field name.</div><div class="ttdef"><b>Definition:</b> JsonFieldName.h:49</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData</a></div><div class="ttdoc">Template class representing a data field.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:86</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonArray_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonArray.html">Devel::Serializing::IJsonArray</a></div><div class="ttdoc">Represents a JSON array of a specific type.</div><div class="ttdef"><b>Definition:</b> JsonSerializableArray.h:16</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonArray_html_a51a3f1013f553d313b0fe18e1de01f18"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonArray.html#a51a3f1013f553d313b0fe18e1de01f18">Devel::Serializing::IJsonArray::operator=</a></div><div class="ttdeci">auto &amp; operator=(const IJsonArray&lt; TStruct &gt; &amp;i_tValue)</div><div class="ttdoc">Assigns another instance of IJsonArray to this instance.</div><div class="ttdef"><b>Definition:</b> JsonSerializableArray.h:119</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonArray_html_ab320ead7b86e2ce2521238f66df53d74"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonArray.html#ab320ead7b86e2ce2521238f66df53d74">Devel::Serializing::IJsonArray::IJsonArray</a></div><div class="ttdeci">IJsonArray(const CJsonFieldName i_oFieldName)</div><div class="ttdoc">Constructs an instance of the JSON array with the given field name.</div><div class="ttdef"><b>Definition:</b> JsonSerializableArray.h:20</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonArray_html_adb74bb779db326cd57d058340f993255"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonArray.html#adb74bb779db326cd57d058340f993255">Devel::Serializing::IJsonArray::operator=</a></div><div class="ttdeci">auto &amp; operator=(IJsonArray&lt; TStruct &gt; &amp;&amp;i_tValue)</div><div class="ttdoc">Moves another instance of IJsonArray to this instance.</div><div class="ttdef"><b>Definition:</b> JsonSerializableArray.h:128</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html">Devel::Serializing::IJsonType</a></div><div class="ttdoc">Represents a JSON data type with serialization and deserialization functionality.</div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:84</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html_a2ca5779137134e17b356f5ade4e599d3"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html#a2ca5779137134e17b356f5ade4e599d3">Devel::Serializing::IJsonType&lt; TStruct, IData&lt; std::vector&lt; TStruct &gt; &gt; &gt;::getObject</a></div><div class="ttdeci">IO::CJsonObject * getObject(IO::CJsonObject &amp;i_oObject, const bool i_bIsStrict)</div><div class="ttdoc">Retrieves the JSON object for the specified JSON field.</div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:177</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html_a5d6083b97ad8a65516dd41d6ca808e64"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html#a5d6083b97ad8a65516dd41d6ca808e64">Devel::Serializing::IJsonType&lt; TStruct, IData&lt; std::vector&lt; TStruct &gt; &gt; &gt;::name</a></div><div class="ttdeci">std::string_view name() const</div><div class="ttdoc">Retrieves the name of the JSON field.</div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:157</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html_aa947c65eaba4257129900c58df9e7348"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html#aa947c65eaba4257129900c58df9e7348">Devel::Serializing::IJsonType&lt; TStruct, IData&lt; std::vector&lt; TStruct &gt; &gt; &gt;::setNull</a></div><div class="ttdeci">void setNull(bool i_bState)</div><div class="ttdoc">Sets the null state of the JSON field.</div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:169</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html_ac6f061108168397ce8f7dca94a32e7fb"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html#ac6f061108168397ce8f7dca94a32e7fb">Devel::Serializing::IJsonType&lt; TStruct, IData&lt; std::vector&lt; TStruct &gt; &gt; &gt;::checkSerializeObject</a></div><div class="ttdeci">bool checkSerializeObject(IO::CJsonObject &amp;i_oObject, const bool i_bIsStrict) const</div><div class="ttdoc">Checks if serialization of the object is allowed and handles null fields.</div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:200</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IJsonType_html_af1ef85c7cd87fb1e3a955bac037b87ad"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IJsonType.html#af1ef85c7cd87fb1e3a955bac037b87ad">Devel::Serializing::IJsonType&lt; TStruct, IData&lt; std::vector&lt; TStruct &gt; &gt; &gt;::IJsonType</a></div><div class="ttdeci">IJsonType(const CJsonFieldName i_oFieldName)</div><div class="ttdoc">Constructs an IJsonType object with the specified JSON field name.</div><div class="ttdef"><b>Definition:</b> JsonSerializableType.h:88</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IValue_html_a0b56890dc5ecb9da4487c906c8a4b81c"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">Devel::Serializing::IValue&lt; int &gt;::m_tValue</a></div><div class="ttdeci">int m_tValue</div><div class="ttdoc">The value.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:78</div></div>
 <div class="ttc" id="anamespaceDevel_1_1IO_html_ae2905c4dbe746154e9e0047933bd7e06a7d4041c78f28d189e7a1562ffc2039d4"><div class="ttname"><a href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06a7d4041c78f28d189e7a1562ffc2039d4">Devel::IO::EJsonType::JTArray</a></div><div class="ttdeci">@ JTArray</div><div class="ttdoc">An array type (an ordered collection of values).</div></div>
 <div class="ttc" id="anamespaceDevel_1_1IO_html_ae2905c4dbe746154e9e0047933bd7e06ab20eda835e43411dabadf338e094d110"><div class="ttname"><a href="namespaceDevel_1_1IO.html#ae2905c4dbe746154e9e0047933bd7e06ab20eda835e43411dabadf338e094d110">Devel::IO::EJsonType::JTObject</a></div><div class="ttdeci">@ JTObject</div><div class="ttdoc">An object type (an unordered set of name/value pairs).</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a></div><div class="ttdoc">The namespace encapsulating serializing related functionality in the Devel framework.</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html_a9cc14fd6be0f8403203fe1ab2e16db43"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html#a9cc14fd6be0f8403203fe1ab2e16db43">Devel::Serializing::SerializeObject</a></div><div class="ttdeci">bool SerializeObject(const T &amp;i_oStruct, IO::CJsonObject &amp;i_oObject, const bool i_bIsStrict=false, size_t i_nStructSize=sizeof(T))</div><div class="ttdoc">Serializes a struct into a JSON object.</div><div class="ttdef"><b>Definition:</b> JsonSerializer.h:51</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html_ab793a6c1821d00601e1e595c90e4f658"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html#ab793a6c1821d00601e1e595c90e4f658">Devel::Serializing::DeserializeObject</a></div><div class="ttdeci">bool DeserializeObject(T &amp;i_oStruct, IO::CJsonObject &amp;i_oObject, const bool i_bIsStrict=false, size_t i_nStructSize=sizeof(T))</div><div class="ttdoc">Deserializes a JSON object into a struct.</div><div class="ttdef"><b>Definition:</b> JsonSerializer.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

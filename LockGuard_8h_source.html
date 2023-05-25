@@ -109,27 +109,31 @@ $(document).ready(function(){initNavTree('LockGuard_8h_source.html',''); initRes
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Core/Global.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Threading/Mutex/Mutex.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>Devel::Threading {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define RecursiveLockGuard(x)    CLockGuard CatUniqueVar(locker, __COUNTER__)(x);</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CLockGuard.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Threading_1_1CLockGuard.html">CLockGuard</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classDevel_1_1Threading_1_1CLockGuard.html">CLockGuard</a>(<span class="keyword">const</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;i_oMutex)</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                : m_oMutex(i_oMutex) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            this-&gt;m_oMutex.lock();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        ~<a class="code" href="classDevel_1_1Threading_1_1CLockGuard.html">CLockGuard</a>() {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            this-&gt;m_oMutex.unlock();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">const</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;m_oMutex;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="ttc" id="aclassDevel_1_1Threading_1_1CLockGuard_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CLockGuard.html">Devel::Threading::CLockGuard</a></div><div class="ttdef"><b>Definition:</b> LockGuard.h:9</div></div>
-<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html">Devel::Threading::CMutex</a></div><div class="ttdef"><b>Definition:</b> Mutex.h:6</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceDevel_1_1Threading.html">Devel::Threading</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define RecursiveLockGuard(x)    CLockGuard CatUniqueVar(locker, __COUNTER__)(x);</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CLockGuard.html">   28</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Threading_1_1CLockGuard.html">CLockGuard</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CLockGuard.html#adc8ed44721455b5ae97566b5c1e6c6fd">   32</a></span>&#160;        <a class="code" href="classDevel_1_1Threading_1_1CLockGuard.html#adc8ed44721455b5ae97566b5c1e6c6fd">CLockGuard</a>(<span class="keyword">const</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;i_oMutex)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                : m_oMutex(i_oMutex) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            this-&gt;m_oMutex.<a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">lock</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classDevel_1_1Threading_1_1CLockGuard.html#aadc804ca9e835675377f6c31ed9b6631">   38</a></span>&#160;        <a class="code" href="classDevel_1_1Threading_1_1CLockGuard.html#aadc804ca9e835675377f6c31ed9b6631">~CLockGuard</a>() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            this-&gt;m_oMutex.<a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">unlock</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">const</span> <a class="code" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a> &amp;m_oMutex;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CLockGuard_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CLockGuard.html">Devel::Threading::CLockGuard</a></div><div class="ttdoc">A lock guard class for a recursive mutex.</div><div class="ttdef"><b>Definition:</b> LockGuard.h:28</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CLockGuard_html_aadc804ca9e835675377f6c31ed9b6631"><div class="ttname"><a href="classDevel_1_1Threading_1_1CLockGuard.html#aadc804ca9e835675377f6c31ed9b6631">Devel::Threading::CLockGuard::~CLockGuard</a></div><div class="ttdeci">~CLockGuard()</div><div class="ttdoc">Destroys the CLockGuard and releases the lock on the mutex.</div><div class="ttdef"><b>Definition:</b> LockGuard.h:38</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CLockGuard_html_adc8ed44721455b5ae97566b5c1e6c6fd"><div class="ttname"><a href="classDevel_1_1Threading_1_1CLockGuard.html#adc8ed44721455b5ae97566b5c1e6c6fd">Devel::Threading::CLockGuard::CLockGuard</a></div><div class="ttdeci">CLockGuard(const CMutex &amp;i_oMutex)</div><div class="ttdoc">Constructs a CLockGuard and acquires the lock on the specified mutex.</div><div class="ttdef"><b>Definition:</b> LockGuard.h:32</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html">Devel::Threading::CMutex</a></div><div class="ttdoc">A class for handling recursive mutexes.</div><div class="ttdef"><b>Definition:</b> Mutex.h:47</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a78d0a7285419ad25165ee0d7658868df"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">Devel::Threading::CMutex::lock</a></div><div class="ttdeci">void lock() const</div><div class="ttdoc">Locks the mutex. If the mutex is currently locked by another thread, this call will block the calling...</div><div class="ttdef"><b>Definition:</b> Mutex.h:58</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a9b697f302d6bac78d0a826cb11c0444b"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">Devel::Threading::CMutex::unlock</a></div><div class="ttdeci">void unlock() const</div><div class="ttdoc">Unlocks the mutex.</div><div class="ttdef"><b>Definition:</b> Mutex.h:63</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Threading_html"><div class="ttname"><a href="namespaceDevel_1_1Threading.html">Devel::Threading</a></div><div class="ttdoc">The namespace encapsulating threading related classes and functions in the Devel framework.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

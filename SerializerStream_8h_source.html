@@ -109,43 +109,51 @@ $(document).ready(function(){initNavTree('SerializerStream_8h_source.html',''); 
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Serializing/Core/SerializableData.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Devel::Serializing {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> FalseException = std::logic_error(<span class="stringliteral">&quot;Serialize-Function returned false!&quot;</span>);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> TooLessDataInPacketException = std::range_error(</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;            <span class="stringliteral">&quot;Not enough data in Packet available for deserialize into Struct!&quot;</span>);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">bool</span> SerializeStream(<span class="keyword">const</span> T &amp;i_oStruct, IO::CWriteStream &amp;i_oStream) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">return</span> IterateSerializableStruct&lt;IData&lt;&gt;&gt;(&amp;i_oStruct, [&amp;](<span class="keyword">const</span> IData&lt;&gt; *i_pData) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">if</span> (!i_pData-&gt;doSerialize(i_oStream)) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        });</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> DeserializeStream(T &amp;i_oStruct, IO::CReadStream &amp;i_oStream, <span class="keywordtype">size_t</span> i_nStructSize = <span class="keyword">sizeof</span>(T)) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">if</span> (i_oStream.buffer()) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">return</span> IterateDeserializableStruct&lt;IData&lt;&gt;&gt;(&amp;i_oStruct, [&amp;](IData&lt;&gt; *i_pData) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">if</span> (!i_pData-&gt;isHidden()) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    <span class="keywordflow">if</span> (i_oStream.isEoB()) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        <span class="keywordflow">throw</span> TooLessDataInPacketException;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    }</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> FalseException = std::logic_error(<span class="stringliteral">&quot;Serialize-Function returned false!&quot;</span>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> TooLessDataInPacketException = std::range_error(</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            <span class="stringliteral">&quot;Not enough data in Packet available for deserialize into Struct!&quot;</span>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespaceDevel_1_1Serializing.html#a112e1d1fc2f74e1894ddc845bf5e9bf2">   20</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceDevel_1_1Serializing.html#a112e1d1fc2f74e1894ddc845bf5e9bf2">SerializeStream</a>(<span class="keyword">const</span> T &amp;i_oStruct, <a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> IterateSerializableStruct&lt;IData&lt;&gt;&gt;(&amp;i_oStruct, [&amp;](<span class="keyword">const</span> <a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData&lt;&gt;</a> *i_pData) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span> (!i_pData-&gt;doSerialize(i_oStream)) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        });</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    <span class="keywordflow">if</span> (!i_pData-&gt;doDeserialize(i_oStream)) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }, i_nStructSize);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">throw</span> IO::NoBufferException;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="namespaceDevel_1_1Serializing.html#a85f967a2f68412135beedcaac9034adb">   39</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceDevel_1_1Serializing.html#a85f967a2f68412135beedcaac9034adb">DeserializeStream</a>(T &amp;i_oStruct, <a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream, <span class="keywordtype">size_t</span> i_nStructSize = <span class="keyword">sizeof</span>(T)) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (i_oStream.<a class="code" href="classDevel_1_1IO_1_1CReadStream.html#ab320722692c61f149a6318ca108bf38b">buffer</a>()) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">return</span> IterateDeserializableStruct&lt;IData&lt;&gt;&gt;(&amp;i_oStruct, [&amp;](<a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData&lt;&gt;</a> *i_pData) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">if</span> (!i_pData-&gt;isHidden()) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    <span class="keywordflow">if</span> (i_oStream.<a class="code" href="classDevel_1_1IO_1_1CReadStream.html#ad57e30af3cdfc4588dcc509dfee710b6">isEoB</a>()) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        <span class="keywordflow">throw</span> TooLessDataInPacketException;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">if</span> (!i_pData-&gt;doDeserialize(i_oStream)) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }, i_nStructSize);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">throw</span> IO::NoBufferException;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html">Devel::IO::CReadStream</a></div><div class="ttdoc">A class for reading data from a buffer. This class provides functionality to read data from a buffer....</div><div class="ttdef"><b>Definition:</b> ReadStream.h:37</div></div>
+<div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html_ab320722692c61f149a6318ca108bf38b"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html#ab320722692c61f149a6318ca108bf38b">Devel::IO::CReadStream::buffer</a></div><div class="ttdeci">const char * buffer() const</div><div class="ttdoc">Returns the buffer of the CReadStream.</div><div class="ttdef"><b>Definition:</b> ReadStream.h:145</div></div>
+<div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html_ad57e30af3cdfc4588dcc509dfee710b6"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html#ad57e30af3cdfc4588dcc509dfee710b6">Devel::IO::CReadStream::isEoB</a></div><div class="ttdeci">bool isEoB() const</div><div class="ttdoc">Checks if the current position is at the end of the buffer.</div><div class="ttdef"><b>Definition:</b> ReadStream.h:186</div></div>
+<div class="ttc" id="aclassDevel_1_1IO_1_1CWriteStream_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CWriteStream.html">Devel::IO::CWriteStream</a></div><div class="ttdoc">A class for writing data to a buffer. This class provides functionality to write data to a buffer....</div><div class="ttdef"><b>Definition:</b> WriteStream.h:42</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData</a></div><div class="ttdoc">Template class representing a data field.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:86</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a></div><div class="ttdoc">The namespace encapsulating serializing related functionality in the Devel framework.</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html_a112e1d1fc2f74e1894ddc845bf5e9bf2"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html#a112e1d1fc2f74e1894ddc845bf5e9bf2">Devel::Serializing::SerializeStream</a></div><div class="ttdeci">bool SerializeStream(const T &amp;i_oStruct, IO::CWriteStream &amp;i_oStream)</div><div class="ttdoc">Serializes a struct to a write stream.</div><div class="ttdef"><b>Definition:</b> SerializerStream.h:20</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html_a85f967a2f68412135beedcaac9034adb"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html#a85f967a2f68412135beedcaac9034adb">Devel::Serializing::DeserializeStream</a></div><div class="ttdeci">bool DeserializeStream(T &amp;i_oStruct, IO::CReadStream &amp;i_oStream, size_t i_nStructSize=sizeof(T))</div><div class="ttdoc">Deserializes a struct from a read stream.</div><div class="ttdef"><b>Definition:</b> SerializerStream.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

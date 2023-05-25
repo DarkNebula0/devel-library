@@ -108,17 +108,22 @@ $(document).ready(function(){initNavTree('classDevel_1_1Serializing_1_1IArithmet
 <div class="title">Devel::Serializing::IArithmetic&lt; T, IsHidden, &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class representing an arithmetic value for serialization.  
+ <a href="classDevel_1_1Serializing_1_1IArithmetic.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SerializableArithmetic_8h_source.html">SerializableArithmetic.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Devel::Serializing::IArithmetic&lt; T, IsHidden, &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDevel_1_1Serializing_1_1IArithmetic__inherit__graph.png" border="0" usemap="#aDevel_1_1Serializing_1_1IArithmetic_3_01T_00_01IsHidden_00_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aDevel_1_1Serializing_1_1IArithmetic_3_01T_00_01IsHidden_00_01_4_inherit__map" id="aDevel_1_1Serializing_1_1IArithmetic_3_01T_00_01IsHidden_00_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,273,215,315"/>
+<area shape="rect" title="Class representing an arithmetic value for serialization." alt="" coords="5,273,215,315"/>
 <area shape="rect" href="classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="13,363,207,419"/>
 <area shape="rect" href="classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="39,184,181,225"/>
-<area shape="rect" href="classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="42,95,178,136"/>
-<area shape="rect" href="classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="42,5,178,47"/>
-<area shape="rect" href="classDevel_1_1Serializing_1_1IJsonNumber.html" title=" " alt="" coords="35,467,185,508"/>
+<area shape="rect" href="classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="42,95,178,136"/>
+<area shape="rect" href="classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="42,5,178,47"/>
+<area shape="rect" href="classDevel_1_1Serializing_1_1IJsonNumber.html" title="Represents a JSON number data type and provides serialization and deserialization functionality for a..." alt="" coords="35,467,185,508"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -126,10 +131,10 @@ Collaboration diagram for Devel::Serializing::IArithmetic&lt; T, IsHidden, &gt;:
 <div class="dyncontent">
 <div class="center"><img src="classDevel_1_1Serializing_1_1IArithmetic__coll__graph.png" border="0" usemap="#aDevel_1_1Serializing_1_1IArithmetic_3_01T_00_01IsHidden_00_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aDevel_1_1Serializing_1_1IArithmetic_3_01T_00_01IsHidden_00_01_4_coll__map" id="aDevel_1_1Serializing_1_1IArithmetic_3_01T_00_01IsHidden_00_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="5,273,215,315"/>
+<area shape="rect" title="Class representing an arithmetic value for serialization." alt="" coords="5,273,215,315"/>
 <area shape="rect" href="classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="39,184,181,225"/>
-<area shape="rect" href="classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="42,95,178,136"/>
-<area shape="rect" href="classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="42,5,178,47"/>
+<area shape="rect" href="classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="42,95,178,136"/>
+<area shape="rect" href="classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="42,5,178,47"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -139,71 +144,89 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>CreateSerializeOperators</b> (T, IsHidden)</td></tr>
 <tr class="separator:a38603a913966bf801b52c9bff855437c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classDevel_1_1Serializing_1_1IData"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classDevel_1_1Serializing_1_1IData')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData&lt; T, false &gt;</a></td></tr>
-<tr class="memitem:af50014d7810a65a76b1db9483202ca9d inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="af50014d7810a65a76b1db9483202ca9d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>doSerialize</b> (<a class="el" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) const</td></tr>
+<tr class="memitem:a29a732b92f55b42b72e3a9c6ab4be102 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a29a732b92f55b42b72e3a9c6ab4be102"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a29a732b92f55b42b72e3a9c6ab4be102">~IData</a> ()=default</td></tr>
+<tr class="memdesc:a29a732b92f55b42b72e3a9c6ab4be102 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
+<tr class="separator:a29a732b92f55b42b72e3a9c6ab4be102 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af50014d7810a65a76b1db9483202ca9d inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#af50014d7810a65a76b1db9483202ca9d">doSerialize</a> (<a class="el" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream) const</td></tr>
+<tr class="memdesc:af50014d7810a65a76b1db9483202ca9d inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the data to a write stream.  <a href="classDevel_1_1Serializing_1_1IData.html#af50014d7810a65a76b1db9483202ca9d">More...</a><br /></td></tr>
 <tr class="separator:af50014d7810a65a76b1db9483202ca9d inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1f6faab41bda7d98151493d991e1704 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="ac1f6faab41bda7d98151493d991e1704"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>doDeserialize</b> (<a class="el" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream)</td></tr>
+<tr class="memitem:ac1f6faab41bda7d98151493d991e1704 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#ac1f6faab41bda7d98151493d991e1704">doDeserialize</a> (<a class="el" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream)</td></tr>
+<tr class="memdesc:ac1f6faab41bda7d98151493d991e1704 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the data from a read stream.  <a href="classDevel_1_1Serializing_1_1IData.html#ac1f6faab41bda7d98151493d991e1704">More...</a><br /></td></tr>
 <tr class="separator:ac1f6faab41bda7d98151493d991e1704 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a169c60d22dcd80f43da7b48fddaaa413 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a169c60d22dcd80f43da7b48fddaaa413"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>doDeserialize</b> (const char *i_szString)</td></tr>
+<tr class="memitem:a169c60d22dcd80f43da7b48fddaaa413 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a169c60d22dcd80f43da7b48fddaaa413">doDeserialize</a> (const char *i_szString)</td></tr>
+<tr class="memdesc:a169c60d22dcd80f43da7b48fddaaa413 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the data from a string.  <a href="classDevel_1_1Serializing_1_1IData.html#a169c60d22dcd80f43da7b48fddaaa413">More...</a><br /></td></tr>
 <tr class="separator:a169c60d22dcd80f43da7b48fddaaa413 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e9aaed70695b394171f343a466967e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="ad3e9aaed70695b394171f343a466967e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>doDeserialize</b> (std::vector&lt; std::string &gt;::const_iterator &amp;i_oIt, const std::vector&lt; std::string &gt;::const_iterator &amp;i_oItEnd)</td></tr>
+<tr class="memitem:ad3e9aaed70695b394171f343a466967e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#ad3e9aaed70695b394171f343a466967e">doDeserialize</a> (std::vector&lt; std::string &gt;::const_iterator &amp;i_oIt, const std::vector&lt; std::string &gt;::const_iterator &amp;i_oItEnd)</td></tr>
+<tr class="memdesc:ad3e9aaed70695b394171f343a466967e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the data from a range of strings.  <a href="classDevel_1_1Serializing_1_1IData.html#ad3e9aaed70695b394171f343a466967e">More...</a><br /></td></tr>
 <tr class="separator:ad3e9aaed70695b394171f343a466967e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcedb4b1c193dfdf6e7e9a03e00c12b2 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="afcedb4b1c193dfdf6e7e9a03e00c12b2"></a>
-virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const</td></tr>
+<tr class="memitem:afcedb4b1c193dfdf6e7e9a03e00c12b2 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#afcedb4b1c193dfdf6e7e9a03e00c12b2">size</a> () const</td></tr>
+<tr class="memdesc:afcedb4b1c193dfdf6e7e9a03e00c12b2 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the data.  <a href="classDevel_1_1Serializing_1_1IData.html#afcedb4b1c193dfdf6e7e9a03e00c12b2">More...</a><br /></td></tr>
 <tr class="separator:afcedb4b1c193dfdf6e7e9a03e00c12b2 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba88427e268f54847d73bba884e2128a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="aba88427e268f54847d73bba884e2128a"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isHidden</b> () const</td></tr>
+<tr class="memitem:aba88427e268f54847d73bba884e2128a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#aba88427e268f54847d73bba884e2128a">isHidden</a> () const</td></tr>
+<tr class="memdesc:aba88427e268f54847d73bba884e2128a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the field is hidden.  <a href="classDevel_1_1Serializing_1_1IData.html#aba88427e268f54847d73bba884e2128a">More...</a><br /></td></tr>
 <tr class="separator:aba88427e268f54847d73bba884e2128a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cee399c83bb0295e6c8fd7d0e24aa14 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a1cee399c83bb0295e6c8fd7d0e24aa14"></a>
-virtual <a class="el" href="structDevel_1_1Serializing_1_1SCompareData.html">SCompareData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>compareData</b> () const</td></tr>
+<tr class="memitem:a1cee399c83bb0295e6c8fd7d0e24aa14 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structDevel_1_1Serializing_1_1SCompareData.html">SCompareData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a1cee399c83bb0295e6c8fd7d0e24aa14">compareData</a> () const</td></tr>
+<tr class="memdesc:a1cee399c83bb0295e6c8fd7d0e24aa14 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the compare data for the data field.  <a href="classDevel_1_1Serializing_1_1IData.html#a1cee399c83bb0295e6c8fd7d0e24aa14">More...</a><br /></td></tr>
 <tr class="separator:a1cee399c83bb0295e6c8fd7d0e24aa14 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b42019a0630fae15329f80a9d8ae176 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a9b42019a0630fae15329f80a9d8ae176"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const</td></tr>
+<tr class="memitem:a9b42019a0630fae15329f80a9d8ae176 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a9b42019a0630fae15329f80a9d8ae176">begin</a> () const</td></tr>
+<tr class="memdesc:a9b42019a0630fae15329f80a9d8ae176 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the beginning of the value.  <a href="classDevel_1_1Serializing_1_1IData.html#a9b42019a0630fae15329f80a9d8ae176">More...</a><br /></td></tr>
 <tr class="separator:a9b42019a0630fae15329f80a9d8ae176 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b1540a07b5e33fd65211d162f2ab175 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a5b1540a07b5e33fd65211d162f2ab175"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const</td></tr>
+<tr class="memitem:a5b1540a07b5e33fd65211d162f2ab175 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a5b1540a07b5e33fd65211d162f2ab175">end</a> () const</td></tr>
+<tr class="memdesc:a5b1540a07b5e33fd65211d162f2ab175 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the end of the value.  <a href="classDevel_1_1Serializing_1_1IData.html#a5b1540a07b5e33fd65211d162f2ab175">More...</a><br /></td></tr>
 <tr class="separator:a5b1540a07b5e33fd65211d162f2ab175 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d17ec9d91d59793bb9106801ab4b05e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a3d17ec9d91d59793bb9106801ab4b05e"></a>
-auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_t i_nIndex)</td></tr>
+<tr class="memitem:a3d17ec9d91d59793bb9106801ab4b05e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a3d17ec9d91d59793bb9106801ab4b05e">operator[]</a> (const size_t i_nIndex)</td></tr>
+<tr class="memdesc:a3d17ec9d91d59793bb9106801ab4b05e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the value at the specified index.  <a href="classDevel_1_1Serializing_1_1IData.html#a3d17ec9d91d59793bb9106801ab4b05e">More...</a><br /></td></tr>
 <tr class="separator:a3d17ec9d91d59793bb9106801ab4b05e inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a672a6b0cba1fb63ea5ca2c83555a807a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a672a6b0cba1fb63ea5ca2c83555a807a"></a>
-const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_t i_nIndex) const</td></tr>
+<tr class="memitem:a672a6b0cba1fb63ea5ca2c83555a807a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a672a6b0cba1fb63ea5ca2c83555a807a">operator[]</a> (const size_t i_nIndex) const</td></tr>
+<tr class="memdesc:a672a6b0cba1fb63ea5ca2c83555a807a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a const reference to the value at the specified index.  <a href="classDevel_1_1Serializing_1_1IData.html#a672a6b0cba1fb63ea5ca2c83555a807a">More...</a><br /></td></tr>
 <tr class="separator:a672a6b0cba1fb63ea5ca2c83555a807a inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a399397847008b9a68dbc5420f9a7e183 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a399397847008b9a68dbc5420f9a7e183"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SerializerEnableIfNotArithmetic</b> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator--()</td></tr>
+<tr class="memitem:a399397847008b9a68dbc5420f9a7e183 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a399397847008b9a68dbc5420f9a7e183">SerializerEnableIfNotArithmetic</a> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator--()</td></tr>
+<tr class="memdesc:a399397847008b9a68dbc5420f9a7e183 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-decrement operator.  <a href="classDevel_1_1Serializing_1_1IData.html#a399397847008b9a68dbc5420f9a7e183">More...</a><br /></td></tr>
 <tr class="separator:a399397847008b9a68dbc5420f9a7e183 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a3239c86d4fdc04759f7bbed6d33d28 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a9a3239c86d4fdc04759f7bbed6d33d28"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SerializerEnableIfNotArithmetic</b> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator--(int)</td></tr>
+<tr class="memitem:a9a3239c86d4fdc04759f7bbed6d33d28 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a9a3239c86d4fdc04759f7bbed6d33d28">SerializerEnableIfNotArithmetic</a> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator--(int)</td></tr>
+<tr class="memdesc:a9a3239c86d4fdc04759f7bbed6d33d28 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Post-decrement operator.  <a href="classDevel_1_1Serializing_1_1IData.html#a9a3239c86d4fdc04759f7bbed6d33d28">More...</a><br /></td></tr>
 <tr class="separator:a9a3239c86d4fdc04759f7bbed6d33d28 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ea33e431c73d008f75fa6ea563aaf57 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="a3ea33e431c73d008f75fa6ea563aaf57"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SerializerEnableIfNotArithmetic</b> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator++()</td></tr>
+<tr class="memitem:a3ea33e431c73d008f75fa6ea563aaf57 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#a3ea33e431c73d008f75fa6ea563aaf57">SerializerEnableIfNotArithmetic</a> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator++()</td></tr>
+<tr class="memdesc:a3ea33e431c73d008f75fa6ea563aaf57 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-increment operator.  <a href="classDevel_1_1Serializing_1_1IData.html#a3ea33e431c73d008f75fa6ea563aaf57">More...</a><br /></td></tr>
 <tr class="separator:a3ea33e431c73d008f75fa6ea563aaf57 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2224d87b6a121b1b259c631c2e93972 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top"><a id="ad2224d87b6a121b1b259c631c2e93972"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SerializerEnableIfNotArithmetic</b> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator++(int)</td></tr>
+<tr class="memitem:ad2224d87b6a121b1b259c631c2e93972 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IData.html#ad2224d87b6a121b1b259c631c2e93972">SerializerEnableIfNotArithmetic</a> (<a class="el" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt; T &gt; &amp;) operator++(int)</td></tr>
+<tr class="memdesc:ad2224d87b6a121b1b259c631c2e93972 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="mdescLeft">&#160;</td><td class="mdescRight">Post-increment operator.  <a href="classDevel_1_1Serializing_1_1IData.html#ad2224d87b6a121b1b259c631c2e93972">More...</a><br /></td></tr>
 <tr class="separator:ad2224d87b6a121b1b259c631c2e93972 inherit pub_methods_classDevel_1_1Serializing_1_1IData"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classDevel_1_1Serializing_1_1IValue"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classDevel_1_1Serializing_1_1IValue')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classDevel_1_1Serializing_1_1IValue.html">Devel::Serializing::IValue&lt; T &gt;</a></td></tr>
-<tr class="memitem:af67857d570b736defafbb6f426fa0a36 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memTemplParams" colspan="2"><a id="af67857d570b736defafbb6f426fa0a36"></a>
-template&lt;typename ... TArgs, std::enable_if_t&lt; std::is_constructible_v&lt; T, TArgs... &gt;&gt; *  = nullptr&gt; </td></tr>
-<tr class="memitem:af67857d570b736defafbb6f426fa0a36 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>IValue</b> (TArgs... i_tArgs)</td></tr>
+<tr class="memitem:af67857d570b736defafbb6f426fa0a36 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memTemplParams" colspan="2">template&lt;typename ... TArgs, std::enable_if_t&lt; std::is_constructible_v&lt; T, TArgs... &gt;&gt; *  = nullptr&gt; </td></tr>
+<tr class="memitem:af67857d570b736defafbb6f426fa0a36 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IValue.html#af67857d570b736defafbb6f426fa0a36">IValue</a> (TArgs... i_tArgs)</td></tr>
+<tr class="memdesc:af67857d570b736defafbb6f426fa0a36 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <code><a class="el" href="classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value.">IValue</a></code> object with the specified arguments.  <a href="classDevel_1_1Serializing_1_1IValue.html#af67857d570b736defafbb6f426fa0a36">More...</a><br /></td></tr>
 <tr class="separator:af67857d570b736defafbb6f426fa0a36 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d6ee6e2288594277e9144e04099cf66 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memItemLeft" align="right" valign="top"><a id="a4d6ee6e2288594277e9144e04099cf66"></a>
-const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> () const</td></tr>
+<tr class="memitem:a4d6ee6e2288594277e9144e04099cf66 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IValue.html#a4d6ee6e2288594277e9144e04099cf66">value</a> () const</td></tr>
+<tr class="memdesc:a4d6ee6e2288594277e9144e04099cf66 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value.  <a href="classDevel_1_1Serializing_1_1IValue.html#a4d6ee6e2288594277e9144e04099cf66">More...</a><br /></td></tr>
 <tr class="separator:a4d6ee6e2288594277e9144e04099cf66 inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ef439162075e4a7653b992d268676fd inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memItemLeft" align="right" valign="top"><a id="a4ef439162075e4a7653b992d268676fd"></a>
-T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> ()</td></tr>
+<tr class="memitem:a4ef439162075e4a7653b992d268676fd inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IValue.html#a4ef439162075e4a7653b992d268676fd">value</a> ()</td></tr>
+<tr class="memdesc:a4ef439162075e4a7653b992d268676fd inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the value.  <a href="classDevel_1_1Serializing_1_1IValue.html#a4ef439162075e4a7653b992d268676fd">More...</a><br /></td></tr>
 <tr class="separator:a4ef439162075e4a7653b992d268676fd inherit pub_methods_classDevel_1_1Serializing_1_1IValue"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classDevel_1_1Serializing_1_1IValue"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classDevel_1_1Serializing_1_1IValue')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classDevel_1_1Serializing_1_1IValue.html">Devel::Serializing::IValue&lt; T &gt;</a></td></tr>
 <tr class="memitem:a0b56890dc5ecb9da4487c906c8a4b81c inherit pro_attribs_classDevel_1_1Serializing_1_1IValue"><td class="memItemLeft" align="right" valign="top"><a id="a0b56890dc5ecb9da4487c906c8a4b81c"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>m_tValue</b></td></tr>
+T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a></td></tr>
+<tr class="memdesc:a0b56890dc5ecb9da4487c906c8a4b81c inherit pro_attribs_classDevel_1_1Serializing_1_1IValue"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value. <br /></td></tr>
 <tr class="separator:a0b56890dc5ecb9da4487c906c8a4b81c inherit pro_attribs_classDevel_1_1Serializing_1_1IValue"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T, bool IsHidden = false, typename std::enable_if&lt; std::is_arithmetic&lt; T &gt;::value &gt; * = nullptr&gt;<br />
+class Devel::Serializing::IArithmetic&lt; T, IsHidden, &gt;</h3>
+
+<p>Class representing an arithmetic value for serialization. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the arithmetic value. </td></tr>
+    <tr><td class="paramname">IsHidden</td><td>Flag indicating if the field should be hidden during serialization. </td></tr>
+    <tr><td class="paramname">Enable</td><td>SFINAE enable parameter to restrict the template to arithmetic types. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/runner/work/devel-library/devel-library/Serializing/Core/Types/<a class="el" href="SerializableArithmetic_8h_source.html">SerializableArithmetic.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -211,7 +234,7 @@ T&#160;</td><td class="memItemRight" valign="bottom"><b>m_tValue</b></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceDevel.html">Devel</a></li><li class="navelem"><b>Serializing</b></li><li class="navelem"><a class="el" href="classDevel_1_1Serializing_1_1IArithmetic.html">IArithmetic</a></li>
+    <li class="navelem"><a class="el" href="namespaceDevel.html">Devel</a></li><li class="navelem"><a class="el" href="namespaceDevel_1_1Serializing.html">Serializing</a></li><li class="navelem"><a class="el" href="classDevel_1_1Serializing_1_1IArithmetic.html">IArithmetic</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

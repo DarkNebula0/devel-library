@@ -111,48 +111,50 @@ $(document).ready(function(){initNavTree('SerializableBool_8h_source.html',''); 
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Serializing/Core/SerializableData.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Core/Utils/StringUtils.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>Devel::Serializing {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma pack(push, 1)</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> IsH<span class="keywordtype">id</span>den = false, <span class="keyword">typename</span> T = <span class="keywordtype">bool</span>&gt;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IBool.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Serializing_1_1IBool.html">IBool</a> : <span class="keyword">public</span> <a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt;T, IsHidden&gt; {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">bool</span> serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream)<span class="keyword"> const override </span>{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            i_oStream.<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">push</a>(this-&gt;m_tValue);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma pack(push, 1)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> IsH<span class="keywordtype">id</span>den = false, <span class="keyword">typename</span> T = <span class="keywordtype">bool</span>&gt;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classDevel_1_1Serializing_1_1IBool.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classDevel_1_1Serializing_1_1IBool.html">IBool</a> : <span class="keyword">public</span> <a class="code" href="classDevel_1_1Serializing_1_1IData.html">IData</a>&lt;T, IsHidden&gt; {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">bool</span> deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            this-&gt;m_tValue = i_oStream.<a class="code" href="classDevel_1_1IO_1_1CReadStream.html#af3712ce85b7ba9c8c21663c85bfb1453">get</a>&lt;T&gt;();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">bool</span> deserialize(<span class="keyword">const</span> <span class="keywordtype">char</span> *i_szString)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            this-&gt;m_tValue = (<a class="code" href="namespaceDevel_1_1StringUtils.html#a84a92cb7d3fa15f04c41a32607d0abee">StringUtils::ToInt64</a>(i_szString) &gt; 0);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">bool</span> deserialize(std::vector&lt;std::string&gt;::const_iterator &amp;i_oIt,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;::const_iterator &amp;i_oItEnd)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            this-&gt;m_tValue = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(<a class="code" href="namespaceDevel_1_1StringUtils.html#aaf14196e70c8c8d9b0108fa093c65be2">StringUtils::ToInt</a>(*i_oIt));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            ++i_oIt;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        CreateSerializeOperators(T, IsHidden);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">}</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">bool</span> serialize(<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html">IO::CWriteStream</a> &amp;i_oStream)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            i_oStream.<a class="code" href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">push</a>(this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">bool</span> deserialize(<a class="code" href="classDevel_1_1IO_1_1CReadStream.html">IO::CReadStream</a> &amp;i_oStream)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a> = i_oStream.<a class="code" href="classDevel_1_1IO_1_1CReadStream.html#af3712ce85b7ba9c8c21663c85bfb1453">get</a>&lt;T&gt;();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">bool</span> deserialize(<span class="keyword">const</span> <span class="keywordtype">char</span> *i_szString)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a> = (<a class="code" href="namespaceDevel_1_1StringUtils.html#a84a92cb7d3fa15f04c41a32607d0abee">StringUtils::ToInt64</a>(i_szString) &gt; 0);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">bool</span> deserialize(std::vector&lt;std::string&gt;::const_iterator &amp;i_oIt,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;::const_iterator &amp;i_oItEnd)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            this-&gt;<a class="code" href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">m_tValue</a> = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(<a class="code" href="namespaceDevel_1_1StringUtils.html#aaf14196e70c8c8d9b0108fa093c65be2">StringUtils::ToInt</a>(*i_oIt));</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ++i_oIt;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        CreateSerializeOperators(T, IsHidden);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    };</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#pragma pack(pop)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">}</span></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html">Devel::IO::CReadStream</a></div><div class="ttdoc">A class for reading data from a buffer. This class provides functionality to read data from a buffer....</div><div class="ttdef"><b>Definition:</b> ReadStream.h:37</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CReadStream_html_af3712ce85b7ba9c8c21663c85bfb1453"><div class="ttname"><a href="classDevel_1_1IO_1_1CReadStream.html#af3712ce85b7ba9c8c21663c85bfb1453">Devel::IO::CReadStream::get</a></div><div class="ttdeci">T get(const size_t i_nPosition, const bool i_fSetPosition)</div><div class="ttdoc">Reads a value of type T from the buffer.</div><div class="ttdef"><b>Definition:</b> ReadStream.h:344</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CWriteStream_html"><div class="ttname"><a href="classDevel_1_1IO_1_1CWriteStream.html">Devel::IO::CWriteStream</a></div><div class="ttdoc">A class for writing data to a buffer. This class provides functionality to write data to a buffer....</div><div class="ttdef"><b>Definition:</b> WriteStream.h:42</div></div>
 <div class="ttc" id="aclassDevel_1_1IO_1_1CWriteStream_html_a1b502ec41d8b3e07628e4928ae1f564d"><div class="ttname"><a href="classDevel_1_1IO_1_1CWriteStream.html#a1b502ec41d8b3e07628e4928ae1f564d">Devel::IO::CWriteStream::push</a></div><div class="ttdeci">void push(const void *i_pBuffer, size_t i_nSize)</div><div class="ttdoc">Pushes the specified data to the buffer.</div><div class="ttdef"><b>Definition:</b> WriteStream.cpp:30</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1IBool_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IBool.html">Devel::Serializing::IBool</a></div><div class="ttdef"><b>Definition:</b> SerializableBool.h:11</div></div>
-<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData</a></div><div class="ttdef"><b>Definition:</b> SerializableData.h:53</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IBool_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IBool.html">Devel::Serializing::IBool</a></div><div class="ttdoc">A class representing a boolean value for serialization.</div><div class="ttdef"><b>Definition:</b> SerializableBool.h:17</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IData_html"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IData.html">Devel::Serializing::IData</a></div><div class="ttdoc">Template class representing a data field.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:86</div></div>
+<div class="ttc" id="aclassDevel_1_1Serializing_1_1IValue_html_a0b56890dc5ecb9da4487c906c8a4b81c"><div class="ttname"><a href="classDevel_1_1Serializing_1_1IValue.html#a0b56890dc5ecb9da4487c906c8a4b81c">Devel::Serializing::IValue::m_tValue</a></div><div class="ttdeci">T m_tValue</div><div class="ttdoc">The value.</div><div class="ttdef"><b>Definition:</b> SerializableData.h:78</div></div>
+<div class="ttc" id="anamespaceDevel_1_1Serializing_html"><div class="ttname"><a href="namespaceDevel_1_1Serializing.html">Devel::Serializing</a></div><div class="ttdoc">The namespace encapsulating serializing related functionality in the Devel framework.</div></div>
 <div class="ttc" id="anamespaceDevel_1_1StringUtils_html_a84a92cb7d3fa15f04c41a32607d0abee"><div class="ttname"><a href="namespaceDevel_1_1StringUtils.html#a84a92cb7d3fa15f04c41a32607d0abee">Devel::StringUtils::ToInt64</a></div><div class="ttdeci">long long ToInt64(const std::string &amp;i_sBuffer)</div><div class="ttdoc">Converts a string to a 64-bit integer.</div><div class="ttdef"><b>Definition:</b> StringUtils.h:222</div></div>
 <div class="ttc" id="anamespaceDevel_1_1StringUtils_html_aaf14196e70c8c8d9b0108fa093c65be2"><div class="ttname"><a href="namespaceDevel_1_1StringUtils.html#aaf14196e70c8c8d9b0108fa093c65be2">Devel::StringUtils::ToInt</a></div><div class="ttdeci">int ToInt(const std::string &amp;i_sBuffer)</div><div class="ttdoc">Converts a string to an integer.</div><div class="ttdef"><b>Definition:</b> StringUtils.h:239</div></div>
 </div><!-- fragment --></div><!-- contents -->

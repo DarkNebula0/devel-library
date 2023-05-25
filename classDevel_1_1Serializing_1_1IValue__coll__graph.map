@@ -1,4 +1,4 @@
 <map id="Devel::Serializing::IValue&lt; T &gt;" name="Devel::Serializing::IValue&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,141,136"/>
-<area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="5,5,141,47"/>
+<area shape="rect" id="node1" title="Template class representing a value." alt="" coords="5,95,141,136"/>
+<area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="5,5,141,47"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="Devel::Serializing::IJsonString" name="Devel::Serializing::IJsonString">
-<area shape="rect" id="node1" title=" " alt="" coords="25,377,161,419"/>
+<area shape="rect" id="node1" title="Represents a JSON string data type and provides serialization and deserialization functionality." alt="" coords="25,377,161,419"/>
 <area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="5,273,180,329"/>
-<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="9,184,177,225"/>
+<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IData.html" title="Template class representing a data field." alt="" coords="9,184,177,225"/>
 <area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="25,95,161,136"/>
-<area shape="rect" id="node5" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="25,5,161,47"/>
+<area shape="rect" id="node5" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="25,5,161,47"/>
 </map>

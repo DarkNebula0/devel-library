@@ -1,8 +1,8 @@
 <map id="Devel::Serializing::IArithmetic&lt; T, IsHidden, &gt;" name="Devel::Serializing::IArithmetic&lt; T, IsHidden, &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,273,215,315"/>
+<area shape="rect" id="node1" title="Class representing an arithmetic value for serialization." alt="" coords="5,273,215,315"/>
 <area shape="rect" id="node5" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="13,363,207,419"/>
 <area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="39,184,181,225"/>
-<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="42,95,178,136"/>
-<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="42,5,178,47"/>
-<area shape="rect" id="node6" href="$classDevel_1_1Serializing_1_1IJsonNumber.html" title=" " alt="" coords="35,467,185,508"/>
+<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="42,95,178,136"/>
+<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="42,5,178,47"/>
+<area shape="rect" id="node6" href="$classDevel_1_1Serializing_1_1IJsonNumber.html" title="Represents a JSON number data type and provides serialization and deserialization functionality for a..." alt="" coords="35,467,185,508"/>
 </map>

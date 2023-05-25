@@ -108,19 +108,97 @@ $(document).ready(function(){initNavTree('classDevel_1_1Threading_1_1CMutex.html
 <div class="title">Devel::Threading::CMutex Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A class for handling recursive mutexes.  
+ <a href="classDevel_1_1Threading_1_1CMutex.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Mutex_8h_source.html">Mutex.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7b6e377d6ca946d70821dd2ee69fbf69"><td class="memItemLeft" align="right" valign="top"><a id="a7b6e377d6ca946d70821dd2ee69fbf69"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html#a7b6e377d6ca946d70821dd2ee69fbf69">CMutex</a> ()=default</td></tr>
+<tr class="memdesc:a7b6e377d6ca946d70821dd2ee69fbf69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <a class="el" href="classDevel_1_1Threading_1_1CMutex.html" title="A class for handling recursive mutexes.">CMutex</a>. <br /></td></tr>
+<tr class="separator:a7b6e377d6ca946d70821dd2ee69fbf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfdd8c443cfcedb64e303c6d22a1e5a5"><td class="memItemLeft" align="right" valign="top"><a id="acfdd8c443cfcedb64e303c6d22a1e5a5"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html#acfdd8c443cfcedb64e303c6d22a1e5a5">~CMutex</a> ()=default</td></tr>
+<tr class="memdesc:acfdd8c443cfcedb64e303c6d22a1e5a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default virtual destructor for <a class="el" href="classDevel_1_1Threading_1_1CMutex.html" title="A class for handling recursive mutexes.">CMutex</a>. <br /></td></tr>
+<tr class="separator:acfdd8c443cfcedb64e303c6d22a1e5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78d0a7285419ad25165ee0d7658868df"><td class="memItemLeft" align="right" valign="top"><a id="a78d0a7285419ad25165ee0d7658868df"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> () const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">lock</a> () const</td></tr>
+<tr class="memdesc:a78d0a7285419ad25165ee0d7658868df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the mutex. If the mutex is currently locked by another thread, this call will block the calling thread until the mutex is unlocked. <br /></td></tr>
 <tr class="separator:a78d0a7285419ad25165ee0d7658868df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b697f302d6bac78d0a826cb11c0444b"><td class="memItemLeft" align="right" valign="top"><a id="a9b697f302d6bac78d0a826cb11c0444b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>unlock</b> () const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">unlock</a> () const</td></tr>
+<tr class="memdesc:a9b697f302d6bac78d0a826cb11c0444b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlocks the mutex. <br /></td></tr>
 <tr class="separator:a9b697f302d6bac78d0a826cb11c0444b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dfdbfb2f989ff5cc30bfec17aad4681"><td class="memItemLeft" align="right" valign="top"><a id="a9dfdbfb2f989ff5cc30bfec17aad4681"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>tryLock</b> () const</td></tr>
+<tr class="memitem:a9dfdbfb2f989ff5cc30bfec17aad4681"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html#a9dfdbfb2f989ff5cc30bfec17aad4681">tryLock</a> () const</td></tr>
+<tr class="memdesc:a9dfdbfb2f989ff5cc30bfec17aad4681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to lock the mutex. If the mutex is not available for locking, this function returns immediately with a value of false. If the mutex is available for locking, the function locks the mutex and returns true.  <a href="classDevel_1_1Threading_1_1CMutex.html#a9dfdbfb2f989ff5cc30bfec17aad4681">More...</a><br /></td></tr>
 <tr class="separator:a9dfdbfb2f989ff5cc30bfec17aad4681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A class for handling recursive mutexes. </p>
+<p>This class encapsulates a std::recursive_mutex, providing an interface for locking and unlocking the mutex.</p>
+<p><b>Example</b></p>
+<p>This class must be used when you want to protect a shared resource from simultaneous access by multiple threads. Here is a simple usage example:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;CMutex.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code" href="classDevel_1_1Threading_1_1CMutex.html">Devel::Threading::CMutex</a> mutex;</div>
+<div class="line"><span class="keywordtype">int</span> sharedCounter = 0;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> incrementCounter() {</div>
+<div class="line">    mutex.<a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">lock</a>();</div>
+<div class="line">    sharedCounter++;</div>
+<div class="line">    mutex.<a class="code" href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">unlock</a>();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="comment">// Launch two threads that both increment the shared counter</span></div>
+<div class="line">    std::thread t1(incrementCounter);</div>
+<div class="line">    std::thread t2(incrementCounter);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Wait for both threads to finish</span></div>
+<div class="line">    t1.join();</div>
+<div class="line">    t2.join();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Print the final value of the counter</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Final counter value: &quot;</span> &lt;&lt; sharedCounter &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html">Devel::Threading::CMutex</a></div><div class="ttdoc">A class for handling recursive mutexes.</div><div class="ttdef"><b>Definition:</b> Mutex.h:47</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a78d0a7285419ad25165ee0d7658868df"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a78d0a7285419ad25165ee0d7658868df">Devel::Threading::CMutex::lock</a></div><div class="ttdeci">void lock() const</div><div class="ttdoc">Locks the mutex. If the mutex is currently locked by another thread, this call will block the calling...</div><div class="ttdef"><b>Definition:</b> Mutex.h:58</div></div>
+<div class="ttc" id="aclassDevel_1_1Threading_1_1CMutex_html_a9b697f302d6bac78d0a826cb11c0444b"><div class="ttname"><a href="classDevel_1_1Threading_1_1CMutex.html#a9b697f302d6bac78d0a826cb11c0444b">Devel::Threading::CMutex::unlock</a></div><div class="ttdeci">void unlock() const</div><div class="ttdoc">Unlocks the mutex.</div><div class="ttdef"><b>Definition:</b> Mutex.h:63</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9dfdbfb2f989ff5cc30bfec17aad4681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dfdbfb2f989ff5cc30bfec17aad4681">&#9670;&nbsp;</a></span>tryLock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Devel::Threading::CMutex::tryLock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Attempts to lock the mutex. If the mutex is not available for locking, this function returns immediately with a value of false. If the mutex is available for locking, the function locks the mutex and returns true. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the mutex was successfully locked, false otherwise. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/runner/work/devel-library/devel-library/Threading/Mutex/<a class="el" href="Mutex_8h_source.html">Mutex.h</a></li>
 </ul>
@@ -129,7 +207,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>tryLock</b> () const<
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceDevel.html">Devel</a></li><li class="navelem"><b>Threading</b></li><li class="navelem"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a></li>
+    <li class="navelem"><a class="el" href="namespaceDevel.html">Devel</a></li><li class="navelem"><a class="el" href="namespaceDevel_1_1Threading.html">Threading</a></li><li class="navelem"><a class="el" href="classDevel_1_1Threading_1_1CMutex.html">CMutex</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

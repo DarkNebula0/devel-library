@@ -1,6 +1,6 @@
 <map id="Devel::Serializing::IJsonType&lt; T, TData &gt;" name="Devel::Serializing::IJsonType&lt; T, TData &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,273,181,315"/>
+<area shape="rect" id="node1" title="Represents a JSON data type with serialization and deserialization functionality." alt="" coords="5,273,181,315"/>
 <area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="25,184,161,225"/>
 <area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="25,95,161,136"/>
-<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title=" " alt="" coords="25,5,161,47"/>
+<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="25,5,161,47"/>
 </map>

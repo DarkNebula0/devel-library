@@ -1,3 +1,31 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structDevel_1_1Serializing_1_1SCompareData.html" title=" " alt="" coords="5,5,141,47"/>
+<area shape="rect" id="node1" href="$classDevel_1_1Serializing_1_1IField.html" title="Base class for fields." alt="" coords="5,388,141,429"/>
+<area shape="rect" id="node2" href="$classDevel_1_1Serializing_1_1IValue.html" title=" " alt="" coords="189,185,325,227"/>
+<area shape="rect" id="node13" href="$classDevel_1_1Serializing_1_1IValue.html" title="Template class representing a value." alt="" coords="189,549,325,591"/>
+<area shape="rect" id="node3" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="389,44,525,85"/>
+<area shape="rect" id="node5" href="$classDevel_1_1Serializing_1_1IData.html" title="Template class representing a data field." alt="" coords="373,185,541,227"/>
+<area shape="rect" id="node4" href="$classDevel_1_1Serializing_1_1IJsonType.html" title="Represents a JSON data type with serialization and deserialization functionality." alt="" coords="606,5,782,47"/>
+<area shape="rect" id="node6" href="$classDevel_1_1Serializing_1_1IBool.html" title=" " alt="" coords="626,71,762,112"/>
+<area shape="rect" id="node7" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="616,137,772,193"/>
+<area shape="rect" id="node9" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="607,217,781,273"/>
+<area shape="rect" id="node11" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="616,297,772,368"/>
+<area shape="rect" id="node8" href="$classDevel_1_1Serializing_1_1IJsonStruct.html" title="Represents a JSON structure data type and provides serialization and deserialization functionality." alt="" coords="865,144,1039,185"/>
+<area shape="rect" id="node10" href="$classDevel_1_1Serializing_1_1IJsonString.html" title="Represents a JSON string data type and provides serialization and deserialization functionality." alt="" coords="884,224,1020,265"/>
+<area shape="rect" id="node12" href="$classDevel_1_1Serializing_1_1IJsonArray.html" title="Represents a JSON array of a specific type." alt="" coords="866,312,1038,353"/>
+<area shape="rect" id="node14" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="383,389,532,445"/>
+<area shape="rect" id="node16" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="383,469,532,525"/>
+<area shape="rect" id="node18" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="376,549,539,591"/>
+<area shape="rect" id="node22" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="377,615,537,671"/>
+<area shape="rect" id="node24" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="386,696,529,737"/>
+<area shape="rect" id="node28" href="$classDevel_1_1Serializing_1_1IData.html" title=" " alt="" coords="380,762,535,818"/>
+<area shape="rect" id="node15" href="$classDevel_1_1Serializing_1_1IVector.html" title="A class representing a vector for serialization." alt="" coords="599,393,789,449"/>
+<area shape="rect" id="node17" href="$classDevel_1_1Serializing_1_1IString.html" title="A class representing a string value for serialization." alt="" coords="607,476,781,517"/>
+<area shape="rect" id="node19" href="$classDevel_1_1Serializing_1_1IBool.html" title="A class representing a boolean value for serialization." alt="" coords="611,549,777,591"/>
+<area shape="rect" id="node20" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="847,542,1057,598"/>
+<area shape="rect" id="node21" href="$classDevel_1_1Serializing_1_1IJsonBool.html" title="Represents a JSON boolean data type for serialization and deserialization." alt="" coords="1113,549,1249,591"/>
+<area shape="rect" id="node23" href="$classDevel_1_1Serializing_1_1IWString.html" title="A class representing a wide string value for serialization." alt="" coords="600,623,788,664"/>
+<area shape="rect" id="node25" href="$classDevel_1_1Serializing_1_1IArithmetic.html" title="Class representing an arithmetic value for serialization." alt="" coords="589,696,799,737"/>
+<area shape="rect" id="node26" href="$classDevel_1_1Serializing_1_1IJsonType.html" title=" " alt="" coords="855,689,1049,745"/>
+<area shape="rect" id="node27" href="$classDevel_1_1Serializing_1_1IJsonNumber.html" title="Represents a JSON number data type and provides serialization and deserialization functionality for a..." alt="" coords="1105,696,1256,737"/>
+<area shape="rect" id="node29" href="$classDevel_1_1Serializing_1_1ICharArray.html" title="A class representing a fixed&#45;size character array for serialization." alt="" coords="621,762,767,818"/>
 </map>

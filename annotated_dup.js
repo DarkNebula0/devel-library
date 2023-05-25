@@ -12,7 +12,7 @@ var annotated_dup =
         [ "CReadStream", "classDevel_1_1IO_1_1CReadStream.html", "classDevel_1_1IO_1_1CReadStream" ],
         [ "CWriteStream", "classDevel_1_1IO_1_1CWriteStream.html", "classDevel_1_1IO_1_1CWriteStream" ]
       ] ],
-      [ "Serializing", null, [
+      [ "Serializing", "namespaceDevel_1_1Serializing.html", [
         [ "SCompareData", "structDevel_1_1Serializing_1_1SCompareData.html", "structDevel_1_1Serializing_1_1SCompareData" ],
         [ "IStruct", "classDevel_1_1Serializing_1_1IStruct.html", null ],
         [ "IField", "classDevel_1_1Serializing_1_1IField.html", null ],
@@ -32,7 +32,7 @@ var annotated_dup =
         [ "IJsonString", "classDevel_1_1Serializing_1_1IJsonString.html", "classDevel_1_1Serializing_1_1IJsonString" ],
         [ "IJsonStruct", "classDevel_1_1Serializing_1_1IJsonStruct.html", "classDevel_1_1Serializing_1_1IJsonStruct" ]
       ] ],
-      [ "Threading", null, [
+      [ "Threading", "namespaceDevel_1_1Threading.html", [
         [ "CLockGuard", "classDevel_1_1Threading_1_1CLockGuard.html", "classDevel_1_1Threading_1_1CLockGuard" ],
         [ "CMutex", "classDevel_1_1Threading_1_1CMutex.html", "classDevel_1_1Threading_1_1CMutex" ],
         [ "CMutexVector", "classDevel_1_1Threading_1_1CMutexVector.html", "classDevel_1_1Threading_1_1CMutexVector" ],
@@ -43,5 +43,8 @@ var annotated_dup =
       [ "CObjectData", "classDevel_1_1CObjectData.html", "classDevel_1_1CObjectData" ],
       [ "CSingleton", "classDevel_1_1CSingleton.html", "classDevel_1_1CSingleton" ],
       [ "CTimer", "classDevel_1_1CTimer.html", "classDevel_1_1CTimer" ]
-    ] ]
+    ] ],
+    [ "CMutexVector< T >", "classDevel_1_1Threading_1_1CMutexVector_3_01T_01_4.html", null ],
+    [ "CSafeQueue< T >", "classDevel_1_1Threading_1_1CSafeQueue_3_01T_01_4.html", null ],
+    [ "ISerializable", "classDevel_1_1Serializing_1_1ISerializable.html", null ]
 ];
