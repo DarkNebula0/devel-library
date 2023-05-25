@@ -448,7 +448,7 @@ namespace Devel::StringUtils {
     template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type * = nullptr>
     inline std::string ToHex(T i_oValue) {
         char achHexString[4 * sizeof(T) + 3];
-        sprintf_s(achHexString, sizeof(achHexString), "0x%02x", i_oValue);
+        snprintf(achHexString, sizeof(achHexString), "0x%02x", i_oValue);
         return std::string(achHexString);
     }
 }
