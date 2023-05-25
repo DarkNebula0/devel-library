@@ -118,7 +118,7 @@ namespace Devel::StringUtils {
                 i_nLength = strlen(i_szString);
 
             aSplitted.reserve((i_nReserve != size_t(-1) ? i_nReserve :
-                                std::count(i_szString, i_szString + i_nLength, i_bDelimeter) + 1));
+                               std::count(i_szString, i_szString + i_nLength, i_bDelimeter) + 1));
 
             size_t nLastPos = 0;
             for (size_t i = 0; i < i_nLength; i++) {
@@ -238,7 +238,7 @@ namespace Devel::StringUtils {
     /// @return The converted integer.
     inline int ToInt(const std::string &i_sBuffer) {
         char *pEnd;
-        return  static_cast<int>(strtol(i_sBuffer.c_str(), &pEnd, 10));
+        return static_cast<int>(strtol(i_sBuffer.c_str(), &pEnd, 10));
     }
 
     /// @brief Converts a string to an unsigned integer.
@@ -421,10 +421,11 @@ namespace Devel::StringUtils {
         return ToArray(i_pDestination, i_szString, strlen(i_szString));
     }
 
-    /// @brief Copies a string to a destination array.
+    /// @brief Converts a string to an array.
     ///
+    /// @tparam T The type of the destination array.
     /// @param i_pDestination The destination array.
-    /// @param i_szString The string to copy.
+    /// @param i_sData The string data to convert.
     template<typename T>
     void ToArray(T &i_pDestination, const std::string &i_sData) {
         return ToArray(i_pDestination, i_sData.c_str(), i_sData.length());
