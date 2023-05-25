@@ -6,30 +6,30 @@
 #include "Serializing/Serializing.h"
 
 static constexpr char k_szTestString[] = "{\n"
-"  \"glossary\": {\n"
-"    \"title\": \"example glossary\",\n"
-"    \"GlossDiv\": {\n"
-"      \"title\": \"S\",\n"
-"      \"GlossList\": {\n"
-"        \"GlossEntry\": {\n"
-"          \"ID\": \"SGML\",\n"
-"          \"SortAs\": \"SGML\",\n"
-"          \"GlossTerm\": \"Standard Generalized Markup Language\",\n"
-"          \"Acronym\": \"SGML\",\n"
-"          \"Abbrev\": \"ISO 8879:1986\",\n"
-"          \"GlossDef\": {\n"
-"            \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n"
-"            \"GlossSeeAlso\": [\n"
-"              \"GML\",\n"
-"              \"XML\"\n"
-"            ]\n"
-"          },\n"
-"          \"GlossSee\": \"markup\"\n"
-"        }\n"
-"      }\n"
-"    }\n"
-"  }\n"
-"}";
+                                         "  \"glossary\": {\n"
+                                         "    \"title\": \"example glossary\",\n"
+                                         "    \"GlossDiv\": {\n"
+                                         "      \"title\": \"S\",\n"
+                                         "      \"GlossList\": {\n"
+                                         "        \"GlossEntry\": {\n"
+                                         "          \"ID\": \"SGML\",\n"
+                                         "          \"SortAs\": \"SGML\",\n"
+                                         "          \"GlossTerm\": \"Standard Generalized Markup Language\",\n"
+                                         "          \"Acronym\": \"SGML\",\n"
+                                         "          \"Abbrev\": \"ISO 8879:1986\",\n"
+                                         "          \"GlossDef\": {\n"
+                                         "            \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n"
+                                         "            \"GlossSeeAlso\": [\n"
+                                         "              \"GML\",\n"
+                                         "              \"XML\"\n"
+                                         "            ]\n"
+                                         "          },\n"
+                                         "          \"GlossSee\": \"markup\"\n"
+                                         "        }\n"
+                                         "      }\n"
+                                         "    }\n"
+                                         "  }\n"
+                                         "}";
 
 TEST_CASE("PARSE_VALID_JSON", "[IO_JSON_TEST]") {
     IO::CJsonDocument oJsonDocument;
@@ -80,52 +80,52 @@ TEST_CASE("MINIFIED_LENGTH", "[IO_JSON_TEST]") {
 
 #pragma pack(push, 1)
 namespace JsonModel {
-	using namespace Serializing;
+    using namespace Serializing;
 
-	struct GlossDef {
-		IJsonString para = JsonFieldName("para");
-		IJsonArray<IString<>> glossSeeAlso = JsonFieldName("GlossSeeAlso");
-	};
+    struct GlossDef {
+        IJsonString para = JsonFieldName("para");
+        IJsonArray<IString<>> glossSeeAlso = JsonFieldName("GlossSeeAlso");
+    };
 
-	struct GlossEntry {
-		IJsonString id = JsonFieldName("ID");
-		IJsonString sortAs = JsonFieldName("SortAs");
-		IJsonString glossTerm = JsonFieldName("GlossTerm");
-		IJsonString acronym = JsonFieldName("Acronym");
-		IJsonString abbrev = JsonFieldName("Abbrev");
-		IJsonString glossSee = JsonFieldName("GlossSee");
-		IJsonStruct<GlossDef> glossDef = JsonFieldName("GlossDef");
-	};
+    struct GlossEntry {
+        IJsonString id = JsonFieldName("ID");
+        IJsonString sortAs = JsonFieldName("SortAs");
+        IJsonString glossTerm = JsonFieldName("GlossTerm");
+        IJsonString acronym = JsonFieldName("Acronym");
+        IJsonString abbrev = JsonFieldName("Abbrev");
+        IJsonString glossSee = JsonFieldName("GlossSee");
+        IJsonStruct<GlossDef> glossDef = JsonFieldName("GlossDef");
+    };
 
-	struct GlossList {
-		IJsonStruct<GlossEntry> glossEntry = JsonFieldName("GlossEntry");
-	};
+    struct GlossList {
+        IJsonStruct<GlossEntry> glossEntry = JsonFieldName("GlossEntry");
+    };
 
-	struct GlossDiv {
-		IJsonString title = JsonFieldName("title");
-		IJsonStruct<GlossList> glossList = JsonFieldName("GlossList");
-	};
+    struct GlossDiv {
+        IJsonString title = JsonFieldName("title");
+        IJsonStruct<GlossList> glossList = JsonFieldName("GlossList");
+    };
 
-	struct Glossary {
-		IJsonString title = JsonFieldName("title");
-		IJsonStruct<GlossDiv> glossDiv = JsonFieldName("GlossDiv");
-	};
+    struct Glossary {
+        IJsonString title = JsonFieldName("title");
+        IJsonStruct<GlossDiv> glossDiv = JsonFieldName("GlossDiv");
+    };
 
-	struct GlossaryOnlyTitle {
-		IJsonString title = JsonFieldName("title");
-	};
+    struct GlossaryOnlyTitle {
+        IJsonString title = JsonFieldName("title");
+    };
 
-	struct RootModel {
-		IJsonStruct<Glossary> glossary = JsonFieldName("glossary");
-	};
+    struct RootModel {
+        IJsonStruct<Glossary> glossary = JsonFieldName("glossary");
+    };
 
-	struct RootModelOnlyTitle {
-		IJsonStruct<GlossaryOnlyTitle> glossary = JsonFieldName("glossary");
-	};
+    struct RootModelOnlyTitle {
+        IJsonStruct<GlossaryOnlyTitle> glossary = JsonFieldName("glossary");
+    };
 
-	struct Test {
-		IJsonArray<IString<>> glossSeeAlso = JsonFieldName("GlossSeeAlso");
-	};
+    struct Test {
+        IJsonArray<IString<>> glossSeeAlso = JsonFieldName("GlossSeeAlso");
+    };
 
 }
 #pragma pack(pop)
@@ -135,6 +135,7 @@ TEST_CASE("DESERIALIZE_JSON_DOCUMENT", "[IO_JSON_TEST]") {
     REQUIRE_NOTHROW(oJsonDocument.parse(k_szTestString));
 
     REQUIRE(oJsonDocument["glossary"]["title"] == "example glossary"); // Test object data
+
 
     JsonModel::RootModel rootModel;
     REQUIRE_NOTHROW(Serializing::DeserializeDocument<JsonModel::RootModel>(rootModel, oJsonDocument, true));
@@ -176,25 +177,25 @@ TEST_CASE("DESERIALIZE_MIXED_ARRAY", "[IO_JSON_TEST]") {
 
 TEST_CASE("SERIALIZE_JSON_DOCUMENT", "[IO_JSON_TEST]") {
 
-	JsonModel::RootModel rootModel;
+    JsonModel::RootModel rootModel;
 
-	rootModel.glossary->title = "example glossary";
-	rootModel.glossary->glossDiv->title = "S";
-	rootModel.glossary->glossDiv->glossList->glossEntry->id = "SGML";
-	rootModel.glossary->glossDiv->glossList->glossEntry->sortAs = "SGML";
-	rootModel.glossary->glossDiv->glossList->glossEntry->glossTerm = "Standard Generalized Markup Language";
-	rootModel.glossary->glossDiv->glossList->glossEntry->acronym = "SGML";
-	rootModel.glossary->glossDiv->glossList->glossEntry->abbrev = "ISO 8879:1986";
-	rootModel.glossary->glossDiv->glossList->glossEntry->glossSee = "markup";
-	rootModel.glossary->glossDiv->glossList->glossEntry->glossDef->para = "A meta-markup language, used to create markup languages such as DocBook.";
-	rootModel.glossary->glossDiv->glossList->glossEntry->glossDef->glossSeeAlso->push_back("GML");
-	rootModel.glossary->glossDiv->glossList->glossEntry->glossDef->glossSeeAlso->push_back("XML");
+    rootModel.glossary->title = "example glossary";
+    rootModel.glossary->glossDiv->title = "S";
+    rootModel.glossary->glossDiv->glossList->glossEntry->id = "SGML";
+    rootModel.glossary->glossDiv->glossList->glossEntry->sortAs = "SGML";
+    rootModel.glossary->glossDiv->glossList->glossEntry->glossTerm = "Standard Generalized Markup Language";
+    rootModel.glossary->glossDiv->glossList->glossEntry->acronym = "SGML";
+    rootModel.glossary->glossDiv->glossList->glossEntry->abbrev = "ISO 8879:1986";
+    rootModel.glossary->glossDiv->glossList->glossEntry->glossSee = "markup";
+    rootModel.glossary->glossDiv->glossList->glossEntry->glossDef->para = "A meta-markup language, used to create markup languages such as DocBook.";
+    rootModel.glossary->glossDiv->glossList->glossEntry->glossDef->glossSeeAlso->push_back("GML");
+    rootModel.glossary->glossDiv->glossList->glossEntry->glossDef->glossSeeAlso->push_back("XML");
 
-	IO::CJsonDocument oJsonDocument;
+    IO::CJsonDocument oJsonDocument;
 
-	REQUIRE_NOTHROW(Serializing::SerializeDocument(rootModel, oJsonDocument, true));
+    REQUIRE_NOTHROW(Serializing::SerializeDocument(rootModel, oJsonDocument, true));
 
-	REQUIRE(oJsonDocument.serialize(false).length() == 360);
+    REQUIRE(oJsonDocument.serialize(false).length() == 360);
 }
 
 

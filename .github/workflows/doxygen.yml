@@ -1,0 +1,59 @@
+name: Deploy Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - documentation
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Install dependencies
+        run: sudo apt-get install doxygen graphviz
+
+      - name: Restore Vcpkg cache
+        uses: actions/cache@v2
+        with:
+          path: vcpkg
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+
+      - name: Install Vcpkg
+        run: |
+          if [ ! -d "vcpkg" ]; then
+            git clone https://github.com/microsoft/vcpkg.git
+            cd vcpkg
+            ./bootstrap-vcpkg.sh
+          fi
+        working-directory: ${{ github.workspace }}
+
+      - name: Install Vcpkg packages
+        run: |
+          cd vcpkg
+          ./vcpkg install --feature-flags=manifests
+        working-directory: ${{ github.workspace }}
+
+      - name: Generate Doxygen documentation
+        run: |
+          if [[ ${{ github.ref }} == 'refs/heads/main' || ${{ github.ref }} == 'refs/heads/documentation' ]]; then
+            cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
+            cmake --build build --target doc_doxygen
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: doc_doxygen/html
