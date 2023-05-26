@@ -78,5 +78,101 @@ TEST_CASE("CCharArray functions are tested.", "[cchararray]") {
         constexpr size_t Size = 10;
         CCharArray<Size> arr1("Hello");
         REQUIRE(arr1.toStdString() == "Hello");
+    }SECTION("Constructor from std::string") {
+        std::string str = "example string";
+        CCharArray<50> arr(str);
+
+        REQUIRE(strcmp(arr.c_str(), str.c_str()) == 0);
+    }
+
+    SECTION("Constructor from initializer_list") {
+        CCharArray<50> arr({'e', 'x', 'a', 'm', 'p', 'l', 'e'});
+
+        REQUIRE(strcmp(arr.c_str(), "example") == 0);
+    }
+
+    SECTION("Constructor from other CCharArray") {
+        CCharArray<50> arr1("example string");
+        CCharArray<50> arr2(arr1);
+
+        REQUIRE(strcmp(arr2.c_str(), arr1.c_str()) == 0);
+    }
+
+    SECTION("Set from std::string") {
+        CCharArray<50> arr;
+        arr.set("example string");
+
+        REQUIRE(strcmp(arr.c_str(), "example string") == 0);
+    }
+
+    SECTION("Set from other CCharArray") {
+        CCharArray<50> arr1("example string");
+        CCharArray<50> arr2;
+        arr2.set(arr1);
+
+        REQUIRE(strcmp(arr2.c_str(), arr1.c_str()) == 0);
+    }
+
+    SECTION("Begin and End") {
+        CCharArray<50> arr("example string");
+
+        REQUIRE(*arr.begin() == 'e');
+        REQUIRE(*(arr.end() - 1) == '\0');
+    }
+
+    SECTION("First and Last") {
+        CCharArray<50> arr("example string");
+
+        REQUIRE(arr.first() == 'e');
+        REQUIRE(arr.last() == '\0');
+    }
+
+    SECTION("At") {
+        CCharArray<50> arr("example string");
+        REQUIRE(arr.at(6) == 'e');
+    }
+
+    SECTION("Operator =") {
+        CCharArray<50> arr1;
+        CCharArray<50> arr2("example string");
+        arr1 = arr2;
+
+        REQUIRE(strcmp(arr1.c_str(), arr2.c_str()) == 0);
+
+        std::string str = "new string";
+        arr1 = str;
+
+        REQUIRE(strcmp(arr1.c_str(), str.c_str()) == 0);
+    }
+
+    SECTION("Operator ==") {
+        CCharArray<50> arr1("example string");
+        CCharArray<50> arr2(arr1);
+
+        REQUIRE((arr1 == arr2));
+    }
+
+    SECTION("Operator !=") {
+        CCharArray<50> arr1("example string");
+        CCharArray<50> arr2("different string");
+
+        REQUIRE((arr1 != arr2));
+
+        std::string str = "new string";
+        REQUIRE((arr1 != str));
+    }
+
+    SECTION("Cast to char*") {
+        CCharArray<50> arr("example string");
+        char *cstr = arr;
+
+        REQUIRE(strcmp(cstr, arr.c_str()) == 0);
+    }
+
+    SECTION("Cast to const char*") {
+        CCharArray<50> arr("example string");
+        const char *cstr = arr;
+
+        REQUIRE(strcmp(cstr, arr.c_str()) == 0);
     }
 }
