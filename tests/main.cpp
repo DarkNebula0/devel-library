@@ -11,4 +11,7 @@
 #include "Json_Test.h"
 #include "StringUtils_Test.h"
 #include "VectorUtils_Test.h"
-#include "CObjectData_Test.h"
+#include "ObjectData_Test.h"
+#include "DynamicBuffer_Test.h"
+#include "ReadStream_Test.h"
+#include "WriteStream_Test.h"

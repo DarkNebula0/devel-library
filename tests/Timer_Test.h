@@ -55,8 +55,8 @@ TEST_CASE("CTimer Test", "[Timer]") {
 
     SECTION("Checking timer hasExpired function") {
         Devel::CTimer timer(true);
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        REQUIRE(timer.hasExpired(40) == true);
+        std::this_thread::sleep_for(std::chrono::milliseconds(25));
+        REQUIRE(timer.hasExpired(20) == true);
         REQUIRE(timer.hasExpired(60) == false);
     }
 

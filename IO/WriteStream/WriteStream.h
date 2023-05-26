@@ -241,7 +241,7 @@ namespace Devel::IO {
         /// @return Reference to the assigned CWriteStream object.
         CWriteStream &operator=(const CWriteStream &i_oOther) {
             this->clear();
-            this->push(i_oOther.m_pBuffer, i_oOther.m_nSize);
+            this->push(i_oOther.m_pBuffer, i_oOther.m_nAllocatedSize);
             return *this;
         }
 
