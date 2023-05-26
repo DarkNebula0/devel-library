@@ -10,17 +10,17 @@ permissions:
   contents: write
 
 jobs:
-  setup:
-    uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
-    with:
-      vcpkg-json: 'vcpkg.json'
-    secrets:
-      github-token: ${{ secrets.GITHUB_TOKEN }}
-
-  build-and-deploy-docs:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Run common steps
+        uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
+        with:
+          vcpkg-json: 'vcpkg.json'
+        secrets:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generate Doxygen documentation
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/main' || ${{ github.ref }} == 'refs/heads/documentation' ]]; then
