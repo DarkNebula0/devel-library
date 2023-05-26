@@ -227,7 +227,7 @@ TEST_CASE("StringUtils functions are tested.", "[string-utils]") {
         std::string replaced = Replace("Hello, world!", "world", "universe");
         REQUIRE(replaced == "Hello, universe!");
     }
-    
+
     SECTION("Set with C-string is tested") {
         char destination[10] = {};
         Set(destination, "Hello", 10);

@@ -11,3 +11,4 @@
 #include "Json_Test.h"
 #include "StringUtils_Test.h"
 #include "VectorUtils_Test.h"
+#include "CObjectData_Test.h"

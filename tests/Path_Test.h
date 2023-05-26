@@ -1,13 +1,14 @@
 #pragma once
+
 #include "Devel.h"
 #include <catch2/catch_test_macros.hpp>
 
 using namespace Devel::IO;
 
-TEST_CASE( "FORMAT", "[IO_PATH_TEST]" ) {
+TEST_CASE("FORMAT", "[IO_PATH_TEST]") {
     CPath oPath("./");
 
-    REQUIRE( oPath.toStdString() == "./");
+    REQUIRE(oPath.toStdString() == "./");
 
     oPath.setPath("c:\\User\\Tree");
 
@@ -22,16 +23,16 @@ TEST_CASE( "FORMAT", "[IO_PATH_TEST]" ) {
 #ifdef _WIN32
     REQUIRE( oPath.toStdString() == "c:/User/Tree/猫.txt");
 #else
-    REQUIRE( oPath.toStdString() == "c:\\User\\Tree/猫.txt");
+    REQUIRE(oPath.toStdString() == "c:\\User\\Tree/猫.txt");
 #endif
 }
 
-TEST_CASE( "EXTENSION", "[IO_PATH_TEST]" ) {
+TEST_CASE("EXTENSION", "[IO_PATH_TEST]") {
     CPath oPath("ABC.txt");
-    REQUIRE( oPath.toStdString() == "ABC.txt");
+    REQUIRE(oPath.toStdString() == "ABC.txt");
 }
 
-TEST_CASE( "HAS_EXTENSION", "[IO_PATH_TEST]" ) {
+TEST_CASE("HAS_EXTENSION", "[IO_PATH_TEST]") {
     CPath oPath("ABC");
     REQUIRE_FALSE(oPath.hasExtension());
 
@@ -39,7 +40,7 @@ TEST_CASE( "HAS_EXTENSION", "[IO_PATH_TEST]" ) {
     REQUIRE(oPath.hasExtension());
 }
 
-TEST_CASE( "EXTENSION_REPLACE", "[IO_PATH_TEST]" ) {
+TEST_CASE("EXTENSION_REPLACE", "[IO_PATH_TEST]") {
     CPath oPath("ABC.txt");
     REQUIRE(oPath.getFileExtension() == ".txt");
 
@@ -47,13 +48,14 @@ TEST_CASE( "EXTENSION_REPLACE", "[IO_PATH_TEST]" ) {
     REQUIRE(oPath.getFileExtension() == ".png");
 }
 
-TEST_CASE( "FILENAME", "[IO_PATH_TEST]" ) {
+TEST_CASE("FILENAME", "[IO_PATH_TEST]") {
     CPath oPath("ABC.txt");
     REQUIRE(oPath.getFileNameWithoutExtension() == "ABC");
 }
 
 #ifndef _WIN32
-TEST_CASE( "HAS_FILENAME", "[IO_PATH_TEST]" ) {
+
+TEST_CASE("HAS_FILENAME", "[IO_PATH_TEST]") {
     CPath oPath("testDir/");
     REQUIRE_FALSE(oPath.hasFilename());
 
@@ -63,9 +65,10 @@ TEST_CASE( "HAS_FILENAME", "[IO_PATH_TEST]" ) {
     oPath.removeFilename();
     REQUIRE_FALSE(oPath.hasFilename());
 }
+
 #endif
 
-TEST_CASE( "FILENAME_REPLACE", "[IO_PATH_TEST]" ) {
+TEST_CASE("FILENAME_REPLACE", "[IO_PATH_TEST]") {
     CPath oPath("ABC.txt");
     REQUIRE(oPath.getFileNameWithoutExtension() == "ABC");
 
@@ -73,7 +76,7 @@ TEST_CASE( "FILENAME_REPLACE", "[IO_PATH_TEST]" ) {
     REQUIRE(oPath.getFileNameWithoutExtension() == "Tree");
 }
 
-TEST_CASE( "EXISTS", "[IO_PATH_TEST]" ) {
+TEST_CASE("EXISTS", "[IO_PATH_TEST]") {
     CPath oPath("ABC.txt");
     REQUIRE_FALSE(CPath::exists("C:/Tree/Tree1"));
 
