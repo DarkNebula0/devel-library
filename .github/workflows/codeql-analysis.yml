@@ -26,8 +26,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+
 
       - name: Restore Vcpkg cache
         uses: actions/cache@v2
@@ -52,11 +51,13 @@ jobs:
           ./vcpkg install --feature-flags=manifests
         working-directory: ${{ github.workspace }}
 
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+
       - name: Configure CMake
         run: |
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
           cmake --build build
-
 
 
       - name: Perform CodeQL Analysis
