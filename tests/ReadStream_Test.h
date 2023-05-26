@@ -15,7 +15,7 @@ TEST_CASE("Testing CReadStream functionality", "[CReadStream]") {
         const char *testBuffer = "test";
         CReadStream readStream(testBuffer, strlen(testBuffer), true);
         REQUIRE(readStream.size() == strlen(testBuffer));
-        REQUIRE(readStream.buffer() != testBuffer);  // Should point to different memory if copied
+        REQUIRE(readStream.buffer() != testBuffer);
     }
 
     SECTION("Testing setBuffer function") {
@@ -23,7 +23,7 @@ TEST_CASE("Testing CReadStream functionality", "[CReadStream]") {
         const char *testBuffer = "testing setBuffer";
         readStream.setBuffer(testBuffer, strlen(testBuffer), true);
         REQUIRE(readStream.size() == strlen(testBuffer));
-        REQUIRE(readStream.buffer() != testBuffer);  // Should point to different memory if copied
+        REQUIRE(readStream.buffer() != testBuffer);
     }
 
     SECTION("Testing getRaw function") {
@@ -31,7 +31,7 @@ TEST_CASE("Testing CReadStream functionality", "[CReadStream]") {
         CReadStream readStream(testBuffer, strlen(testBuffer) + 1, true);
         char *destination = new char[strlen(testBuffer) + 1];
         readStream.getRaw(destination, strlen(testBuffer) + 1);
-        REQUIRE(strcmp(destination, testBuffer) == 0);  // Should be the same
+        REQUIRE(strcmp(destination, testBuffer) == 0);
         delete[] destination;
     }
 
@@ -44,7 +44,7 @@ TEST_CASE("Testing CReadStream functionality", "[CReadStream]") {
 
     SECTION("Testing assignment operator") {
         const char *testBuffer = "testing operator=";
-        CReadStream readStream1(testBuffer, strlen(testBuffer), true);
+        CReadStream readStream1(testBuffer, strlen(testBuffer) + 1, true);
         CReadStream readStream2 = readStream1;
         REQUIRE(readStream2.size() == readStream1.size());
         REQUIRE(readStream2.position() == readStream1.position());
