@@ -1,0 +1,63 @@
+name: CodeQL and Coverage
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 23 * * 6'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'cpp' ]
+    steps:
+      - name: Run common steps
+        uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
+        with:
+          vcpkg-json: 'vcpkg.json'
+        secrets:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+      - name: Configure CMake
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake --build build
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run common steps
+        uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
+        with:
+          vcpkg-json: 'vcpkg.json'
+        secrets:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install dependencies
+        run: sudo apt-get install lcov
+      - name: Configure CMake
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake --build build --target lib-tests
+      - name: Run Tests and Generate Coverage Data
+        run: |
+          cd build/tests
+          ./lib-tests
+          lcov --directory . --capture --rc lcov_branch_coverage=1 --output-file coverage.info
+          lcov --remove coverage.info '/home/runner/work/devel-library/devel-library/tests/*' '/home/runner/work/devel-library/devel-library/vcpkg_installed/*' '/home/runner/work/devel-library/devel-library/build/*' '/usr/*' --output-file coverage.info
+          lcov --list coverage.info
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./build/tests/coverage.info
