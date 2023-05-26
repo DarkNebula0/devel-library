@@ -8,7 +8,7 @@ spending some time in a private repository on Bitbucket, we decided to make it p
 find some interesting functions that you can use in your projects.
 
 For a detailed list of all the files and their brief descriptions, please refer to
-the [documentation]("https://darknebula0.github.io/devel-library/").
+the [documentation](https://darknebula0.github.io/devel-library/).
 
 # Features
 
@@ -24,7 +24,7 @@ The library is organized into several modules, each providing a set of related f
 # Dependencies
 
 To build this library, you will need to install vcpkg and use it in manifest mode
-(see [here]("https://learn.microsoft.com/de-de/vcpkg/users/manifests") for more information).
+(see [here](https://learn.microsoft.com/de-de/vcpkg/users/manifests) for more information).
 
 The current dependencies are:
 
