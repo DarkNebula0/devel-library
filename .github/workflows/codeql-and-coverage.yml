@@ -9,7 +9,14 @@ on:
     - cron: '0 23 * * 6'
 
 jobs:
-  analyze:
+  setup:
+    uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
+    with:
+      vcpkg-json: 'vcpkg.json'
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  codeql:
     name: Analyze
     runs-on: ubuntu-latest
     permissions:
@@ -19,12 +26,6 @@ jobs:
       matrix:
         language: [ 'cpp' ]
     steps:
-      - name: Run common steps
-        uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
-        with:
-          vcpkg-json: 'vcpkg.json'
-        secrets:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
       - name: Configure CMake
@@ -37,12 +38,6 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - name: Run common steps
-        uses: DarkNebula0/devel-library/.github/workflows/common-setup.yml@main
-        with:
-          vcpkg-json: 'vcpkg.json'
-        secrets:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
         run: sudo apt-get install lcov
       - name: Configure CMake
