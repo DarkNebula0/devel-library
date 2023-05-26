@@ -17,7 +17,7 @@ jobs:
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
   codeql:
-    needs: setup
+    name: Analyze
     runs-on: ubuntu-latest
     permissions:
       security-events: write
@@ -36,7 +36,6 @@ jobs:
         uses: github/codeql-action/analyze@v2
 
   coverage:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
