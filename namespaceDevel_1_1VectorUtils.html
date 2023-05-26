@@ -117,6 +117,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a9bb2247728cc476064dcd3de04525c7b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceDevel_1_1VectorUtils.html#a9bb2247728cc476064dcd3de04525c7b">IsDataInVector</a> (const std::vector&lt; T &gt; &amp;i_atVector, const T &amp;i_tData, size_t *i_pOutIndex=nullptr)</td></tr>
 <tr class="memdesc:a9bb2247728cc476064dcd3de04525c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks if a given data is present in the vector.  <a href="namespaceDevel_1_1VectorUtils.html#a9bb2247728cc476064dcd3de04525c7b">More...</a><br /></td></tr>
 <tr class="separator:a9bb2247728cc476064dcd3de04525c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a165006073e318b7987e34c9d527ef518"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a165006073e318b7987e34c9d527ef518"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceDevel_1_1VectorUtils.html#a165006073e318b7987e34c9d527ef518">IsDataInSortedVector</a> (const std::vector&lt; T &gt; &amp;i_atVector, const T &amp;i_tData, size_t *i_pOutIndex=nullptr)</td></tr>
+<tr class="memdesc:a165006073e318b7987e34c9d527ef518"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks if a given data is present in the sorted vector.  <a href="namespaceDevel_1_1VectorUtils.html#a165006073e318b7987e34c9d527ef518">More...</a><br /></td></tr>
+<tr class="separator:a165006073e318b7987e34c9d527ef518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This namespace includes utilities for working with vectors. </p>
@@ -134,8 +138,56 @@ Functions</h2></td></tr>
 <div class="line">} <span class="keywordflow">else</span> {</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Data not found in vector&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceDevel_1_1VectorUtils_html_a9bb2247728cc476064dcd3de04525c7b"><div class="ttname"><a href="namespaceDevel_1_1VectorUtils.html#a9bb2247728cc476064dcd3de04525c7b">Devel::VectorUtils::IsDataInVector</a></div><div class="ttdeci">bool IsDataInVector(const std::vector&lt; T &gt; &amp;i_atVector, const T &amp;i_tData, size_t *i_pOutIndex=nullptr)</div><div class="ttdoc">This function checks if a given data is present in the vector.</div><div class="ttdef"><b>Definition:</b> VectorUtils.h:35</div></div>
+<div class="ttc" id="anamespaceDevel_1_1VectorUtils_html_a9bb2247728cc476064dcd3de04525c7b"><div class="ttname"><a href="namespaceDevel_1_1VectorUtils.html#a9bb2247728cc476064dcd3de04525c7b">Devel::VectorUtils::IsDataInVector</a></div><div class="ttdeci">bool IsDataInVector(const std::vector&lt; T &gt; &amp;i_atVector, const T &amp;i_tData, size_t *i_pOutIndex=nullptr)</div><div class="ttdoc">This function checks if a given data is present in the vector.</div><div class="ttdef"><b>Definition:</b> VectorUtils.h:36</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a165006073e318b7987e34c9d527ef518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a165006073e318b7987e34c9d527ef518">&#9670;&nbsp;</a></span>IsDataInSortedVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Devel::VectorUtils::IsDataInSortedVector </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>i_atVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>i_tData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>i_pOutIndex</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function checks if a given data is present in the sorted vector. </p>
+<p>Your vector must be sorted in ascending order for this function to work. It uses std::lower_bound to locate the input data in the vector. If it finds a match, it sets the index of the matching element to the out index (if provided) and returns true.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i_atVector</td><td>The input vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i_tData</td><td>The data to search for in the vector. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">i_pOutIndex</td><td>Pointer to an index variable where the index of the found element will be stored. If this parameter is not provided, the function simply checks if the data exists in the vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the data is found in the vector, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a9bb2247728cc476064dcd3de04525c7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9bb2247728cc476064dcd3de04525c7b">&#9670;&nbsp;</a></span>IsDataInVector()</h2>
 
@@ -171,7 +223,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>This function checks if a given data is present in the vector. </p>
-<p>It iterates through the input vector and compares each element with the input data. If it finds a match, it sets the index of the matching element to the out index (if provided) and returns true.</p>
+<p>It uses std::find to locate the input data in the vector. If it finds a match, it sets the index of the matching element to the out index (if provided) and returns true.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">i_atVector</td><td>The input vector. </td></tr>

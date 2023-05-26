@@ -56,6 +56,7 @@ var namespaceDevel =
     ] ],
     [ "Threading", "namespaceDevel_1_1Threading.html", "namespaceDevel_1_1Threading" ],
     [ "VectorUtils", "namespaceDevel_1_1VectorUtils.html", [
+      [ "IsDataInSortedVector", "namespaceDevel_1_1VectorUtils.html#a165006073e318b7987e34c9d527ef518", null ],
       [ "IsDataInVector", "namespaceDevel_1_1VectorUtils.html#a9bb2247728cc476064dcd3de04525c7b", null ]
     ] ],
     [ "CCharArray", "classDevel_1_1CCharArray.html", "classDevel_1_1CCharArray" ],
