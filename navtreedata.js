@@ -25,6 +25,11 @@
 var NAVTREE =
 [
   [ "Devel Lib", "index.html", [
+    [ "Devel C++ Library", "md__home_runner_work_devel_library_devel_library_README.html", [
+      [ "Features", "md__home_runner_work_devel_library_devel_library_README.html#autotoc_md1", null ],
+      [ "Dependencies", "md__home_runner_work_devel_library_devel_library_README.html#autotoc_md2", null ],
+      [ "Repository Status", "md__home_runner_work_devel_library_devel_library_README.html#autotoc_md3", null ]
+    ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -64,7 +69,7 @@ var NAVTREEINDEX =
 "Buffer_8h_source.html",
 "classDevel_1_1IO_1_1CReadStream.html#a06532e9d9c77a157de7116dc36ed412b",
 "dir_3bc344f609ca7e4d1d1cf9f65154c721.html",
-"namespaceDevel_1_1Serializing.html#ab6c2d9de4bd621bcc02001ece53bda20"
+"namespaceDevel_1_1Serializing.html#aa29640ee8d7f6bdcb2bc570bed7f49a6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
